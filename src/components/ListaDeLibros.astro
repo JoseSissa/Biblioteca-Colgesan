@@ -1,0 +1,40 @@
+---
+import { LIBROS } from "@/data/libros.js";
+---
+
+<ul class="libros">
+    {
+        LIBROS.map((libro, index) => {
+            return (
+                <li>
+                    <a href={`/${libro.imagen_libro}`}>
+                        <img
+                            src={`/public/img/libros/${libro.imagen_libro}.webp`}
+                            alt="Imagen portada del libro"
+                        />
+                        <h3>{libro.nombre}</h3>
+                    </a>
+                </li>
+            );
+        })
+    }
+</ul>
+
+<style>
+    .libros {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+        gap: 16px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .libros li {
+        list-style: none;
+    }
+
+    .libros img {
+        width: 100%;
+        aspect-ratio: 48/73;
+    }
+</style>
