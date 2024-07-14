@@ -11,6 +11,7 @@ import { LIBROS } from "@/data/libros.js";
                         <img
                             src={`/img/libros/${libro.imagen_libro}.webp`}
                             alt="Imagen portada del libro"
+                            style={`view-transition-name: libro-${libro.id}`}
                         />
                         <h3>{libro.nombre}</h3>
                     </a>
@@ -21,20 +22,8 @@ import { LIBROS } from "@/data/libros.js";
 </ul>
 
 <style>
-    .libros {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
-        gap: 16px;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .libros li {
-        list-style: none;
-    }
-
-    .libros img {
-        width: 100%;
-        aspect-ratio: 48/73;
+    a {
+        color: var(--color);
+        text-decoration: none;
     }
 </style>

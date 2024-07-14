@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { LIBROS } from "@/data/libros.js";
+import Header from "@/components/Header.astro";
 
 const { libroUrl } = Astro.params;
 
@@ -15,12 +16,14 @@ if (!infoLibro) return Astro.redirect("/404");
 
 <Layout title={infoLibro.nombre}>
     <main>
+        <Header />
         <section class="info">
             <div class="info-imagen">
                 <picture>
                     <img
                         src={`/img/libros/${infoLibro.imagen_libro}.webp`}
                         alt={`Portada del libro ${infoLibro.nombre}`}
+                        style={`view-transition-name: libro-${infoLibro.id}`}
                     />
                 </picture>
             </div>
@@ -59,39 +62,3 @@ if (!infoLibro) return Astro.redirect("/404");
         </section>
     </main>
 </Layout>
-
-<style>
-    .info {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .info-imagen {
-        text-align: center;
-    }
-
-    .info-imagen img {
-        max-width: 350px;
-        object-fit: cover;
-    }
-
-    .info-general {
-        margin-bottom: 40px;
-    }
-
-    .info-general .genero {
-        text-transform: capitalize;
-    }
-
-    .descargarLibro {
-        padding: 10px 20px;
-        border-radius: 8px;
-        color: var(--color);
-        text-decoration: none;
-        text-transform: uppercase;
-        background-color: rgb(37 99 235);
-    }
-    .descargarLibro:hover {
-        background-color: rgb(29 78 216);
-    }
-</style>
