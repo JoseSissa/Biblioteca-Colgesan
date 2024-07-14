@@ -1,21 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ListaDeLibros from "../components/ListaDeLibros.astro";
+import Header from "@/components/Header.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Biblioteca Colgesan">
     <main>
-        <header>
-            <h1>Biblioteca <span class="text-gradient">Colgesan</span></h1>
-        </header>
+        <Header />
         <section>
             <ListaDeLibros />
         </section>
     </main>
 </Layout>
-
-<style>
-    header {
-        text-align: center;
-    }
-</style>

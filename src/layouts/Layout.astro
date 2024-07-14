@@ -1,47 +1,122 @@
 ---
 interface Props {
-	title: string;
+    title: string;
 }
 
 const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="view-transition" content="same-origin" />
+        <title>{title}</title>
+    </head>
+    <body>
+        <slot />
+    </body>
 </html>
 <style is:global>
-	:root {
-		--background: #13151a;
-		--color: #fffeee;
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: var(--background);
-		color: var(--color);
-	}
+    :root {
+        --background: #13151a;
+        --color: #fffeee;
+    }
+    html {
+        font-family: system-ui, sans-serif;
+        background: var(--background);
+        color: var(--color);
+    }
 
-	* {
-		padding: 0;
-		margin: 0;
-		box-sizing: border-box;
-	}
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
 
-	main {
-		width: 100%;
-		max-width: 1024px;
-		margin-left: auto;
-		margin-right: auto;
-		padding: 0 15px;
-	}
+    main {
+        width: 100%;
+        max-width: 1024px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 15px;
+    }
+    header {
+        text-align: center;
+    }
+    .info {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .info aside {
+        padding: 40px 20px;
+    }
+
+    .info-imagen {
+        text-align: center;
+    }
+
+    .info-imagen img {
+        width: 100%;
+        max-width: 230px;
+        object-fit: cover;
+    }
+
+    .info-general {
+        margin-bottom: 40px;
+    }
+
+    .info-general .genero {
+        text-transform: capitalize;
+    }
+
+    .descargarLibro {
+        padding: 10px 20px;
+        border-radius: 8px;
+        color: var(--color);
+        text-decoration: none;
+        text-transform: uppercase;
+        background-color: rgb(37 99 235);
+    }
+    .descargarLibro:hover {
+        background-color: rgb(29 78 216);
+    }
+    .libros {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 230px));
+        gap: 20px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .libros li {
+        list-style: none;
+    }
+
+    .libros img {
+        width: 100%;
+        aspect-ratio: 48/73;
+    }
+
+    @media (max-width: 768px) {
+        .info {
+            grid-template-columns: 1fr;
+        }
+        .info-imagen {
+            text-align: left;
+            padding: 60px 20px 30px;
+        }
+    }
 </style>
+
+<script>
+    import { ejecutarTransicion } from "@/utils/navegacion.js";
+
+    ejecutarTransicion();
+</script>
