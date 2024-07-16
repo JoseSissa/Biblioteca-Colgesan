@@ -4,11 +4,11 @@ import ListaDeLibros from "@/components/ListaDeLibros.astro";
 import Header from "@/components/Header.astro";
 import { LIBROS_NEW } from "@/data/libros";
 
-export async function getStaticPaths() {
-    return LIBROS_NEW.map((gradoEnLista, i) => ({
-        params: { grado: gradoEnLista.id },
-    }));
-}
+// export async function getStaticPaths() {
+//     return LIBROS_NEW.map((gradoEnLista, i) => ({
+//         params: { grado: gradoEnLista.id },
+//     }));
+// }
 
 const { grado } = Astro.params;
 
