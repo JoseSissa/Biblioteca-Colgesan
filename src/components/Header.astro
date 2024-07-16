@@ -1,18 +1,33 @@
 <header>
-    <h1>Biblioteca <span class="text-gradient">Colgesan</span></h1>
+    <h1 style="view-transition-name: header-title;">
+        Biblioteca <span class="text-gradient">Colgesan</span>
+    </h1>
 </header>
 
 <style>
     header {
         width: 100%;
         padding: 40px 0px;
+        margin-bottom: 40px;
         text-align: center;
-        font-size: 36px;
+    }
+    header h1 {
+        font-size: 60px;
     }
     @media (max-width: 768px) {
         header {
             font-size: 30px;
             line-height: 55px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        header {
+            margin-bottom: 0px;
+        }
+        header h1 {
+            font-size: 52px;
+            line-height: 48px;
         }
     }
 </style>

@@ -1,8 +1,8 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { LIBROS } from "@/data/libros.js";
 import { LIBROS_NEW } from "@/data/libros.js";
 import Header from "@/components/Header.astro";
+import InfoLibro from "@/components/InfoLibro.astro";
 
 const { grado: gradoEnURL } = Astro.params;
 
@@ -14,18 +14,27 @@ export async function getStaticPaths() {
 
 const { libroURL } = Astro.params;
 
+// Información del Grado y del libro
 const infoGrado = LIBROS_NEW.find(
     (gradoEnLista) => gradoEnLista.id === gradoEnURL
 );
-
 const infoLibro = infoGrado.libros.find(
     (libroEnLista) => `libro-${libroEnLista.id}` == libroURL
 );
-
 if (!infoLibro) return Astro.redirect("/404");
+
+// Extraemos el género del libro
+let textoGenero = "";
+if (infoLibro.genero.length == 1) {
+    textoGenero = infoLibro.genero[0];
+} else {
+    for (const genero of infoLibro.genero) {
+        textoGenero += `${genero} `;
+    }
+}
 ---
 
-<Layout title="testt">
+<Layout title={infoLibro.nombre}>
     <main>
         <Header />
         <section class="info">
@@ -40,36 +49,121 @@ if (!infoLibro) return Astro.redirect("/404");
             </div>
             <aside>
                 <div class="info-general">
-                    <h1>{infoLibro.nombre}</h1>
-                    <p>Sinopsis: {infoLibro.descripcion}</p>
-                    <p>Autor: {infoLibro.autor}</p>
-                    <p>Año: {infoLibro.anio}</p>
-                    <p>
-                        Género(s):
-                        {
-                            infoLibro.genero.length == 1 ? (
-                                <span class="genero">
-                                    {infoLibro.genero[0]} &nbsp;
-                                </span>
-                            ) : (
-                                infoLibro.genero.map((elem, i) => {
-                                    return (
-                                        <span class="genero">
-                                            {elem} &nbsp;
-                                        </span>
-                                    );
-                                })
-                            )
-                        }
-                    </p>
-                </div>
-
-                <div>
-                    <a href="#" class="descargarLibro" target="_blank">
-                        Descargar Libro
-                    </a>
+                    <h2 class="title-2">{infoLibro.nombre}</h2>
+                    <p>{infoLibro.autor}</p>
                 </div>
             </aside>
         </section>
+
+        <section class="info-descripcion">
+            <div>
+                <InfoLibro titulo="Descripción" texto={infoLibro.descripcion} />
+            </div>
+            <div>
+                <InfoLibro titulo="Editorial" texto={infoLibro.autor} />
+                <InfoLibro titulo="Género(s)" texto={textoGenero} />
+            </div>
+            <div class="descargarLibro">
+                <a href="#" target="_blank"> Descargar Libro </a>
+            </div>
+        </section>
     </main>
 </Layout>
+
+<style>
+    .info {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .info-imagen {
+        text-align: center;
+        z-index: 1;
+    }
+
+    .info-imagen img {
+        width: 100%;
+        max-width: 230px;
+        object-fit: cover;
+        box-shadow: -12px 12px 20px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .info-general {
+        margin-bottom: 40px;
+    }
+
+    .info-general .genero {
+        text-transform: capitalize;
+    }
+    .info aside {
+        padding: 0px 20px;
+    }
+    .info-descripcion {
+        position: relative;
+        top: -100px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 160px 80px 80px;
+        background-color: var(--background-secondary);
+        border-radius: 8px;
+    }
+
+    .info-descripcion div {
+        padding: 0 20px;
+    }
+    .info-descripcion div:last-child {
+        padding: 48px 20px;
+    }
+    .descargarLibro {
+        position: absolute;
+        top: 0px;
+        right: 80px;
+        width: calc(50% - 80px);
+        border-bottom: 2px solid rgba(27, 31, 43, 0.1);
+    }
+    .descargarLibro a {
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 24px;
+        color: var(--background-secondary);
+        background-color: var(--button);
+        text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+        .info {
+            display: block;
+        }
+        .info aside {
+            text-align: center;
+        }
+        .info-descripcion {
+            display: block;
+            top: 0px;
+            padding: 120px 0px 40px;
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+        .info-descripcion div {
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .info-general {
+            margin-bottom: 60px;
+        }
+        .info-imagen {
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+        .descargarLibro {
+            width: 100%;
+            right: 0px;
+            left: 0px;
+            text-align: center;
+            top: -70px;
+            margin: 0 auto;
+        }
+    }
+</style>
