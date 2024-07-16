@@ -1,0 +1,30 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ListaDeLibros from "@/components/ListaDeLibros.astro";
+import Header from "@/components/Header.astro";
+import { LIBROS_NEW } from "@/data/libros";
+
+export async function getStaticPaths() {
+    return LIBROS_NEW.map((gradoEnLista, i) => ({
+        params: { grado: gradoEnLista.id },
+    }));
+}
+
+const { grado } = Astro.params;
+
+const informacionGrado = LIBROS_NEW.find(
+    (gradoEnLista) => gradoEnLista.id === grado
+);
+---
+
+<Layout title="Grado">
+    <main>
+        <Header />
+        <h1>{informacionGrado.grado}</h1>
+        <h2>{informacionGrado.profesor}</h2>
+        <ListaDeLibros
+            gradoId={informacionGrado.id}
+            listaLibros={informacionGrado.libros}
+        />
+    </main>
+</Layout>
