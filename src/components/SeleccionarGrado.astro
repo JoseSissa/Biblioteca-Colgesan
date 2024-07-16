@@ -1,0 +1,19 @@
+---
+import { LIBROS_NEW } from "@/data/libros";
+---
+
+<section>
+    {
+        LIBROS_NEW.map((grado, i) => {
+            return (
+                <div>
+                    <a href={`/${grado.id}`}>
+                        {grado.grado}
+                        {grado.profesor}
+                        {grado.comentariosProfesor}
+                    </a>
+                </div>
+            );
+        })
+    }
+</section>

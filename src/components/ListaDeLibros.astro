@@ -1,19 +1,22 @@
 ---
-import { LIBROS } from "@/data/libros.js";
+const { gradoId, listaLibros } = Astro.props;
 ---
 
 <ul class="libros">
     {
-        LIBROS.map((libro, index) => {
+        listaLibros.map((libro, index) => {
             return (
                 <li>
-                    <a href={`/${libro.imagen_libro}`}>
+                    <a href={`/${gradoId}/libro-${libro.id}`}>
                         <img
                             src={`/img/libros/${libro.imagen_libro}.webp`}
                             alt="Imagen portada del libro"
                             style={`view-transition-name: libro-${libro.id}`}
                         />
-                        <h3>{libro.nombre}</h3>
+                        <h3>
+                            <span>{gradoId}</span>
+                            {libro.nombre}
+                        </h3>
                     </a>
                 </li>
             );
