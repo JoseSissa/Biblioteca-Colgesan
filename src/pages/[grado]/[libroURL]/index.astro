@@ -6,11 +6,11 @@ import InfoLibro from "@/components/InfoLibro.astro";
 
 const { grado: gradoEnURL } = Astro.params;
 
-// export async function getStaticPaths() {
-//     return LIBROS_NEW[gradoEnURL].map((libroEnLista, i) => ({
-//         params: { libroURL: `libro-${libroEnLista.id}` },
-//     }));
-// }
+export async function getStaticPaths() {
+    return LIBROS_NEW[gradoEnURL].map((libroEnLista, i) => ({
+        params: { libroURL: `libro-${libroEnLista.id}` },
+    }));
+}
 
 const { libroURL } = Astro.params;
 
