@@ -1,5 +1,5 @@
 ---
-import "@fontsource/poppins";
+import "@fontsource/merriweather";
 interface Props {
     title: string;
 }
@@ -40,7 +40,7 @@ const { title } = Astro.props;
         --button: #192020;
     }
     html {
-        font-family: "Poppins", sans-serif;
+        font-family: "Merriweather", serif;
         background-color: var(--background);
         color: var(--color);
     }
@@ -54,15 +54,30 @@ const { title } = Astro.props;
     main {
         width: 100%;
         height: 100vh;
-        max-width: 1024px;
+        max-width: 1200px;
         margin-left: auto;
         margin-right: auto;
         padding: 0 15px;
+        line-height: 24px;
     }
     header {
+        width: 100%;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
         text-align: center;
     }
-
+    .aside {
+        width: 100%;
+        max-width: 25%;
+        padding: 0 15px;
+    }
+    .contenido-principal {
+        width: 100%;
+        max-width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
     .title-2 {
         font-size: 40px;
         line-height: 40px;
@@ -104,6 +119,7 @@ const { title } = Astro.props;
 
     .info-imagen img {
         width: 100%;
+        height: 350px;
         max-width: 230px;
         object-fit: cover;
         box-shadow: -12px 12px 20px 2px rgba(0, 0, 0, 0.5);

@@ -5,38 +5,42 @@ import Header from "@/components/Header.astro";
 import InfoLibro from "@/components/InfoLibro.astro";
 
 const { grado: gradoEnURL } = Astro.params;
+const { libroURL } = Astro.params;
+
+const informacionGrado = LIBROS_NEW.find(
+    (gradoEnLista) => gradoEnLista.id === gradoEnURL
+);
+
+if (!gradoEnURL || !informacionGrado) return Astro.redirect("/404");
 
 export async function getStaticPaths() {
-    return LIBROS_NEW[gradoEnURL].map((libroEnLista, i) => ({
+    return informacionGrado?.libros.map((libroEnLista, i) => ({
         params: { libroURL: `libro-${libroEnLista.id}` },
     }));
 }
 
-const { libroURL } = Astro.params;
-
-// Información del Grado y del libro
-const infoGrado = LIBROS_NEW.find(
-    (gradoEnLista) => gradoEnLista.id === gradoEnURL
-);
-const infoLibro = infoGrado.libros.find(
+const infoLibro = informacionGrado.libros.find(
     (libroEnLista) => `libro-${libroEnLista.id}` == libroURL
 );
-if (!infoLibro) return Astro.redirect("/404");
 
 // Extraemos el género del libro
 let textoGenero = "";
-if (infoLibro.genero.length == 1) {
-    textoGenero = infoLibro.genero[0];
-} else {
-    for (const genero of infoLibro.genero) {
-        textoGenero += `${genero} `;
+if (infoLibro) {
+    if (infoLibro?.genero.length == 1) {
+        textoGenero = infoLibro.genero[0];
+    } else {
+        infoLibro?.genero.forEach((generoEnLibro, index) => {
+            index !== infoLibro.genero.length - 1
+                ? (textoGenero += `${generoEnLibro} - `)
+                : (textoGenero += `${generoEnLibro}`);
+        });
     }
 }
 ---
 
 <Layout title={infoLibro.nombre}>
+    <Header />
     <main>
-        <Header />
         <section class="info">
             <div class="info-imagen">
                 <picture>
@@ -49,7 +53,9 @@ if (infoLibro.genero.length == 1) {
             </div>
             <aside>
                 <div class="info-general">
-                    <h2 class="title-2">{infoLibro.nombre}</h2>
+                    <h2 class="title-2">
+                        {infoLibro.nombre}
+                    </h2>
                     <p>{infoLibro.autor}</p>
                 </div>
             </aside>
@@ -64,7 +70,15 @@ if (infoLibro.genero.length == 1) {
                 <InfoLibro titulo="Género(s)" texto={textoGenero} />
             </div>
             <div class="descargarLibro">
-                <a href="#" target="_blank"> Descargar Libro </a>
+                <a href=`/libros/${infoLibro?.imagen_libro}.pdf` download>
+                    Descargar Libro
+                </a>
+                <a
+                    href=`/libros/${infoLibro?.imagen_libro}.pdf`
+                    target="_blank"
+                >
+                    Leer Libro
+                </a>
             </div>
         </section>
     </main>

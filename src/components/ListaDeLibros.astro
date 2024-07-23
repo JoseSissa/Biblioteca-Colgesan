@@ -1,16 +1,23 @@
 ---
-const { gradoId, listaLibros } = Astro.props;
+import { LIBROS_NEW } from "@/data/libros.js";
+
+const { gradoId } = Astro.props;
+
+// Información del Grado y del libro
+const infoGrado = LIBROS_NEW.find(
+    (gradoEnLista) => gradoEnLista.id === gradoId
+);
 ---
 
 <ul class="libros">
     {
-        listaLibros.map((libro, index) => {
+        infoGrado?.libros.map((libro, index) => {
             return (
                 <li class="li">
                     <a href={`/${gradoId}/libro-${libro.id}`}>
                         <img
                             src={`/img/libros/${libro.imagen_libro}.webp`}
-                            alt="Imagen portada del libro"
+                            alt={`Imagen de la portada del libro ${libro.nombre}`}
                             style={`view-transition-name: libro-${libro.id}`}
                         />
                         <h4>{libro.nombre}</h4>
@@ -32,6 +39,8 @@ const { gradoId, listaLibros } = Astro.props;
     a {
         position: relative;
         display: inline-block;
+        width: 100%;
+        height: 100%;
         text-align: left;
         color: var(--color);
         text-decoration: none;
@@ -40,7 +49,19 @@ const { gradoId, listaLibros } = Astro.props;
         transition-duration: 150ms;
     }
     a:hover {
-        transform: scale(1.05);
+        transform: scale(1.02);
+    }
+    a img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        max-height: 350px;
+    }
+    a span {
+        font-size: 14px;
+    }
+    a h4 {
+        padding-top: 8px;
     }
     .hoverLibro {
         position: absolute;
@@ -48,7 +69,7 @@ const { gradoId, listaLibros } = Astro.props;
         left: 0;
         width: 100%;
         height: 100%;
-        max-height: 100%;
+        max-height: 350px;
         padding-bottom: 40px;
         background: linear-gradient(
             to bottom,

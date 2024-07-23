@@ -1,14 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "@/components/Header.astro";
+import QuienesSomos from "@/components/QuienesSomos.astro";
 import SeleccionarGrado from "@/components/SeleccionarGrado.astro";
+import Recomendaciones from "@/components/Recomendaciones.astro";
 ---
 
 <Layout title="Biblioteca Colgesan">
+    <Header />
     <main>
-        <Header />
-        <section>
+        <QuienesSomos />
+        <section class="contenido-principal">
             <SeleccionarGrado />
         </section>
+        <Recomendaciones />
     </main>
 </Layout>
+
+<style>
+    main {
+        display: flex;
+    }
+</style>

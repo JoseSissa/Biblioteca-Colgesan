@@ -10,24 +10,30 @@ export async function getStaticPaths() {
     }));
 }
 
-const { grado } = Astro.params;
+const { grado: gradoEnURL } = Astro.params;
+
+if (!gradoEnURL) {
+    console.log("No se encontró Grado en URL, página GRADO");
+}
 
 const informacionGrado = LIBROS_NEW.find(
-    (gradoEnLista) => gradoEnLista.id === grado
+    (gradoEnLista) => gradoEnLista.id === gradoEnURL
 );
+
+if (!informacionGrado) return Astro.redirect("/404");
+
+export const prerender = true;
 ---
 
 <Layout title=`Libros - ${informacionGrado.grado}`>
+    <Header />
     <main>
-        <Header />
         <div>
             <h2>Recopilación libros para el {informacionGrado.grado}</h2>
             <h2>Docente: {informacionGrado.profesor}</h2>
+            <h2>{informacionGrado.tema}</h2>
         </div>
-        <ListaDeLibros
-            gradoId={informacionGrado.id}
-            listaLibros={informacionGrado.libros}
-        />
+        <ListaDeLibros gradoId={informacionGrado.id} />
     </main>
 </Layout>
 
