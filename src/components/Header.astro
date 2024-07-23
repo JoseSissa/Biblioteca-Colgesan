@@ -1,28 +1,49 @@
 <header>
+    <div class="logo">
+        <img
+            src="/img/icons/logo-colgesan.webp"
+            alt="Logo colegio General Santander"
+        />
+    </div>
     <h1 style="view-transition-name: header-title;">
-        Biblioteca <span class="text-gradient">Colgesan</span>
+        <a href="/">
+            Viajando <br /><span>Entre Páginas</span>
+        </a>
     </h1>
+    <div class="logo">
+        <img src="/img/icons/logo-colgesan.webp" alt="Logo del proyecto" />
+    </div>
 </header>
 
 <style>
     header {
         width: 100%;
-        padding: 40px 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 40px;
         margin-bottom: 40px;
         text-align: center;
     }
+    .logo img {
+        width: 100%;
+        max-width: 80px;
+    }
     header h1 {
         font-size: 60px;
+        line-height: 40px;
+    }
+    header h1 a {
+        text-decoration: none;
+        color: var(--color);
+    }
+    header h1 span {
+        font-size: 36px;
     }
     @media (max-width: 768px) {
         header {
             font-size: 30px;
             line-height: 55px;
-        }
-    }
-
-    @media (max-width: 768px) {
-        header {
             margin-bottom: 0px;
         }
         header h1 {
