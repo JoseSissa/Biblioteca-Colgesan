@@ -1,0 +1,169 @@
+main {
+    width: 100%;
+    height: 100vh;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
+    line-height: 24px;
+}
+header {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.aside {
+    width: 100%;
+    max-width: 25%;
+    padding: 0 15px;
+}
+.contenido-principal {
+    width: 100%;
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.title-2 {
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 40px;
+}
+.title-3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.libros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 230px));
+    gap: 20px;
+    justify-content: center;
+    text-align: center;
+}
+
+.libros li {
+    list-style: none;
+}
+
+.libros img {
+    width: 100%;
+    aspect-ratio: 48/73;
+}
+
+/* Estilos - Libro */
+/* --------------- */
+.info {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.info-imagen {
+    text-align: center;
+    z-index: 1;
+}
+
+.info-imagen img {
+    width: 100%;
+    height: 350px;
+    max-width: 230px;
+    object-fit: cover;
+    box-shadow: -12px 12px 20px 2px rgba(0, 0, 0, 0.5);
+}
+
+.info-general {
+    margin-bottom: 40px;
+}
+
+.info-general .genero {
+    text-transform: capitalize;
+}
+.info aside {
+    padding: 0px 20px;
+}
+.info-descripcion {
+    position: relative;
+    top: -100px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 160px 80px 80px;
+    background-color: var(--background-secondary);
+    border-radius: 8px;
+}
+
+.info-descripcion > div {
+    padding: 0 20px;
+}
+.info-descripcion > div:last-child {
+    padding: 48px 20px;
+}
+.descargarLibro {
+    position: absolute;
+    top: 0px;
+    right: 80px;
+    width: calc(50% - 80px);
+    border-bottom: 2px solid rgba(27, 31, 43, 0.1);
+}
+.descargarLibro a {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 24px;
+    color: var(--background-secondary);
+    background-color: var(--button);
+    text-decoration: none;
+}
+.header-libro {
+    padding: 40px 0;
+}
+
+@media (max-width: 768px) {
+    .info {
+        display: block;
+    }
+    .info aside {
+        text-align: center;
+    }
+    .info-descripcion {
+        display: block;
+        top: 0px;
+        padding: 120px 0px 40px;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    .info-descripcion div {
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .info-general {
+        margin-bottom: 60px;
+    }
+    .info-imagen {
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
+    .descargarLibro {
+        width: 100%;
+        right: 0px;
+        left: 0px;
+        text-align: center;
+        top: -70px;
+        margin: 0 auto;
+    }
+}
+/* --------------- */
+/* Estilos - Libro */
+
+@media (max-width: 768px) {
+    .info {
+        grid-template-columns: 1fr;
+    }
+    .info-imagen {
+        text-align: center;
+        padding: 60px 20px 30px;
+    }
+    .title-2 {
+        margin-bottom: 32px;
+    }
+}
