@@ -442,6 +442,18 @@ export const INFORMACION_LIBROS = [
                 editorial: "",
                 comentarios: [],
             },
+            {
+                id: "11-4",
+                nombre: "Crimen y Castigo",
+                ruta_especifica: "crimen-y-castigo",
+                descripcion:
+                    "Crimen y Castigo narra la historia de Rodión Raskólnikov, un estudiante empobrecido en San Petersburgo que, impulsado por su ideología y desesperación, comete un asesinato. La obra sigue su vida después del crimen, explorando su lucha interna con la culpa, la moralidad y la justificación de sus acciones. A lo largo de la novela, Raskólnikov se enfrenta a la policía, sus seres queridos, y a sí mismo, lo que lo lleva a un proceso de redención y autodescubrimiento. La obra profundiza en temas como la moral, la justicia, el bien y el mal, y la naturaleza humana.",
+                anio: "1866",
+                autor: "Fiódor Dostoyevski",
+                genero: ["Novela", "Novela Filosófica", "Novela Psicológica"],
+                editorial: "",
+                comentarios: [],
+            },
             
         ],
         comentariosProfesor: "",
