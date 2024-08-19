@@ -1,25 +1,21 @@
 ---
-import { LIBROS_NEW } from "@/data/libros.js";
-
-const { gradoId } = Astro.props;
-
-// Información del Grado y del libro
-const infoGrado = LIBROS_NEW.find(
-    (gradoEnLista) => gradoEnLista.id === gradoId
-);
+const { rutaGeneral, librosDelGrado } = Astro.props;
 ---
 
 <ul class="libros">
     {
-        infoGrado?.libros.map((libro, index) => {
+        librosDelGrado.map((libro, index) => {
             return (
                 <li class="li">
-                    <a href={`/${gradoId}/libro-${libro.id}`}>
-                        <img
-                            src={`/img/libros/${libro.imagen_libro}.webp`}
-                            alt={`Imagen de la portada del libro ${libro.nombre}`}
-                            style={`view-transition-name: libro-${libro.id}`}
-                        />
+                    <a href={`/libros/${rutaGeneral}/${libro.ruta_especifica}`}>
+                        <picture>
+                            <source srcset={`/img/libros/${rutaGeneral}/${libro.ruta_especifica}.avif`} type="image/avif"/>
+                            <img
+                                src={`/img/libros/${rutaGeneral}/${libro.ruta_especifica}.webp`}
+                                alt={`Imagen de la portada del libro ${libro.nombre}`}
+                                transition:name={libro.ruta_especifica}
+                            />
+                        </picture>
                         <h4>{libro.nombre}</h4>
                         <span>{libro.autor}</span>
                         <div class="hoverLibro">

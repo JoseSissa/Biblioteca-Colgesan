@@ -1,13 +1,13 @@
 ---
-import { LIBROS_NEW } from "@/data/libros";
+import { INFORMACION_LIBROS } from "@/data/libros";
 ---
 
-<section>
+<section class="contenido-principal">
     {
-        LIBROS_NEW.map((grado, i) => {
+        INFORMACION_LIBROS.map((grado, i) => {
             return (
                 <div>
-                    <a href={`/${grado.id}`}>
+                    <a href={`/grado/${grado.id}`}>
                         {grado.grado} <br />
                         {grado.profesor} <br />
                         {grado.comentariosProfesor}
