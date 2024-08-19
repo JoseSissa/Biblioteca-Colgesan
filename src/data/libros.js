@@ -1,4 +1,4 @@
-export const LIBROS_NEW = [
+export const INFORMACION_LIBROS = [
     {
         id: "grado-6",
         grado: "Grado 6",
@@ -404,51 +404,45 @@ export const LIBROS_NEW = [
         grado: "Grado 11",
         profesor: "Profesor: 11",
         tema: "Obras Universales",
+        ruta_general: "obras-universales",
         libros: [
             {
                 id: "11-1",
                 nombre: "Don Quijote de la Mancha",
+                ruta_especifica: "don-quijote-de-la-mancha",
                 descripcion:
                     "Capítulos I y VIII de la novela con las páginas más hermosas de cuantas se han escrito en español. Descubre la historia que inicia con la famosa frase: “En un lugar de La Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero…”",
                 anio: "1605, Primera parte.",
                 autor: "Miguel de Cervantes Saavedra",
                 genero: ["Novela", "Historieta", "Sátira"],
-                imagen_libro: "obras-universales/don-quijote-de-la-mancha",
+                editorial: "",
                 comentarios: [],
             },
             {
                 id: "11-2",
-                nombre: "Romeo y Julieta",
+                nombre: "Los Miserables",
+                ruta_especifica: "los-miserables",
                 descripcion:
-                    "Esta obra maestra de William Shakespeare, genio de la lengua inglesa, es la historia de amor más hermosa y trágica que jamás se haya escrito. Esta versión de los hermanos Lamb ha sido especialmente escrita para los jóvenes. No dudamos de que su lectura proporcionará, además de un rato de esparcimiento, enseñanzas muy profundas.",
-                anio: "1597",
-                autor: "William Shakespeare",
-                genero: ["Tragedia", "Drama Romántico"],
-                imagen_libro: "obras-universales/romeo-y-julieta",
+                    "Es la historia de Jean Valjean, un convicto que estuvo injustamente encarcelado por 19 años por haberse robado una rebanada de pan. Al ser liberado de su injusta condena, Valjean trata de escapar de su pasado, lleno de maldad y depravación, para vivir una vida digna y honesta. Sin embargo, esto se ve truncado al ser reconocido por el inspector Javert, quien lo persigue obsesionadamente para enviarlo de nuevo a prisión. Esta persecución consume la vida de ambos hombres, terminando en un inesperado desenlace. FonoLibro les presenta esta excelente... dramatización de la obra maestra de Víctor Hugo, con un elenco completo, música original, y excelentes efectos de sonido, la cual le estremecerá, y le llegará al corazón.",
+                anio: "1862",
+                autor: "Víctor Hugo",
+                genero: ["Novela", "Ficción Histórica", "Tragedia"],
+                editorial: "",
                 comentarios: [],
             },
             {
                 id: "11-3",
-                nombre: "Don Quijote de la Mancha",
-                descripcion:
-                    "Capítulos I y VIII de la novela con las páginas más hermosas de cuantas se han escrito en español. Descubre la historia que inicia con la famosa frase: “En un lugar de La Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero…”",
-                anio: "1605, Primera parte.",
-                autor: "Miguel de Cervantes Saavedra",
-                genero: ["Novela", "Historieta", "Sátira"],
-                imagen_libro: "obras-universales/don-quijote-de-la-mancha",
-                comentarios: [],
-            },
-            {
-                id: "11-4",
                 nombre: "Romeo y Julieta",
+                ruta_especifica: "romeo-y-julieta",
                 descripcion:
                     "Esta obra maestra de William Shakespeare, genio de la lengua inglesa, es la historia de amor más hermosa y trágica que jamás se haya escrito. Esta versión de los hermanos Lamb ha sido especialmente escrita para los jóvenes. No dudamos de que su lectura proporcionará, además de un rato de esparcimiento, enseñanzas muy profundas.",
-                anio: "1597",
-                autor: "William Shakespeare",
-                genero: ["Tragedia", "Drama Romántico"],
-                imagen_libro: "obras-universales/romeo-y-julieta",
+                anio: "1595",
+                autor: "William Shakespeare (versión de Charles y Mary Lamb)",
+                genero: ["Tragedia", "Drama romántico"],
+                editorial: "",
                 comentarios: [],
             },
+            
         ],
         comentariosProfesor: "",
     },
