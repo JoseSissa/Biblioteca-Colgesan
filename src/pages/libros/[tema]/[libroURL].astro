@@ -1,27 +1,31 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { LIBROS_NEW } from "@/data/libros.js";
+import { INFORMACION_LIBROS } from "@/data/libros.js";
 import Header from "@/components/Header.astro";
 import InfoLibro from "@/components/InfoLibro.astro";
 
-const { grado: gradoEnURL } = Astro.params;
-const { libroURL } = Astro.params;
-
-const informacionGrado = LIBROS_NEW.find(
-    (gradoEnLista) => gradoEnLista.id === gradoEnURL
-);
-
-if (!gradoEnURL || !informacionGrado) return Astro.redirect("/404");
-
 export async function getStaticPaths() {
-    return informacionGrado?.libros.map((libroEnLista, i) => ({
-        params: { libroURL: `libro-${libroEnLista.id}` },
-    }));
+    return INFORMACION_LIBROS.flatMap((grado) => {
+        return grado.libros.map(libro => {
+            return { params: { tema: `${grado.ruta_general}`, libroURL: `${libro.ruta_especifica}` } };
+        });
+    });
 }
 
-const infoLibro = informacionGrado.libros.find(
-    (libroEnLista) => `libro-${libroEnLista.id}` == libroURL
+const { tema, libroURL } = Astro.params;
+console.log(tema, libroURL);
+
+
+const informacionGrado = INFORMACION_LIBROS.find(
+    (gradoEnLista) => gradoEnLista.ruta_general === tema
 );
+
+if (!informacionGrado) return Astro.redirect("/404");
+
+const infoLibro = informacionGrado.libros.find(
+    (libroEnLista) => libroEnLista.ruta_especifica == libroURL
+);
+
 
 // Extraemos el género del libro
 let textoGenero = "";
@@ -44,10 +48,11 @@ if (infoLibro) {
         <section class="info">
             <div class="info-imagen">
                 <picture>
+                    <source srcset={`/img/libros/${informacionGrado.ruta_general}/${infoLibro.ruta_especifica}.avif`} type="image/avif"/>
                     <img
-                        src={`/img/libros/${infoLibro.imagen_libro}.webp`}
+                        src={`/img/libros/${informacionGrado.ruta_general}/${infoLibro.ruta_especifica}.webp`}
                         alt={`Portada del libro ${infoLibro.nombre}`}
-                        transition:name=`libro-${infoLibro.id}`
+                        transition:name={libroURL}
                     />
                 </picture>
             </div>
@@ -66,15 +71,15 @@ if (infoLibro) {
                 <InfoLibro titulo="Descripción" texto={infoLibro.descripcion} />
             </div>
             <div>
-                <InfoLibro titulo="Editorial" texto={infoLibro.autor} />
+                <InfoLibro titulo="Año" texto={infoLibro.anio} />
                 <InfoLibro titulo="Género(s)" texto={textoGenero} />
             </div>
             <div class="descargarLibro">
-                <a href=`/libros/${infoLibro?.imagen_libro}.pdf` download>
+                <a href=`/libros/${informacionGrado.ruta_general}/${infoLibro.ruta_especifica}.pdf` download>
                     Descargar Libro
                 </a>
                 <a
-                    href=`/libros/${infoLibro?.imagen_libro}.pdf`
+                    href=`/libros/${informacionGrado.ruta_general}/${infoLibro.ruta_especifica}.pdf`
                     target="_blank"
                 >
                     Leer Libro
