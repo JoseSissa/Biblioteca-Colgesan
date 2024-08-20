@@ -63,7 +63,7 @@ La vida es sueño. ... ✅
 Don Quijote de la Mancha. ... ✅
 Don Juan Tenorio. ... ✅
 La Regenta. ... ✅
-Los pazos de Ulloa. 
+Los pazos de Ulloa. ✅
 
 ### GRADO 11
 
