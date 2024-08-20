@@ -46,6 +46,10 @@ const { rutaGeneral, librosDelGrado } = Astro.props;
     }
     a:hover {
         transform: scale(1.05);
+        & .hoverLibro {
+            opacity: 1;
+            visibility: visible;
+        }
     }
     a img {
         display: block;
@@ -86,20 +90,4 @@ const { rutaGeneral, librosDelGrado } = Astro.props;
         border: 1px solid var(--background-secondary);
         color: var(--background-secondary);
     }
-    .active {
-        opacity: 1;
-        visibility: visible;
-    }
 </style>
-
-<script>
-    const libros = document.querySelectorAll("a");
-    libros.forEach((libro) => {
-        libro.addEventListener("mouseenter", () => {
-            libro.children[libro.children.length - 1].classList.add("active");
-        });
-        libro.addEventListener("mouseleave", () =>
-            libro.children[libro.children.length - 1].classList.remove("active")
-        );
-    });
-</script>
