@@ -69,10 +69,10 @@ Los pazos de Ulloa.
 Los miserables, de Víctor Hugo. ... ✅
 Romeo y Julieta ✅
 Crimen Y Castigo, de Fiodor Dostoievski. ... ✅
-Guerra y paz, de León Tolstoi. ...
-Jane Eyre, de Charlotte Brontë. ...
-El principito, de Antoine de Saint Exupéry. ...
-Hamlet, de William Shakespeare. ...
+Guerra y paz, de León Tolstoi. ... ✅
+Jane Eyre, de Charlotte Brontë. ... ✅
+El principito, de Antoine de Saint Exupéry. ... ✅
+Hamlet, de William Shakespeare. ... ✅
 Don Quijote de la Mancha, de Miguel de Cervantes Saavedra. ✅
 
 Géneros:
