@@ -16,14 +16,14 @@
 
 
 ### GRADO 6
-La Muelona (región Andina)
-El Hombre Caimán (región Caribe)
-La Patasola (región Andina)
-La Mano Peluda (Cundinamarca y Boyacá)
-La Llorona (Tolima Grande)
-El Sombrerón (Cundinamarca y Boyacá)
-La Madremonte (Tolima Grande)
-El Silbón (Santanderes)
+La Muelona (región Andina) ✅
+El Hombre Caimán (región Caribe) ✅
+La Patasola (región Andina) ✅
+La Mano Peluda (Cundinamarca y Boyacá) ✅
+La Llorona (Tolima Grande) ✅
+El Sombrerón (Cundinamarca y Boyacá) ✅
+La Madremonte (Tolima Grande) ✅
+El Silbón (Santanderes) ✅
 
 ### GRADO 7
 
@@ -35,11 +35,13 @@ La cueva de la iglesia. ...
 La Barbacoa. ...
 Juana Naranja. ...
 La cueva de mil pesos.
+https://issuu.com/usimon/docs/tradicion_oral_nortesantandereana
+https://www.sinic.gov.co/SINIC/ColombiaCultural/ColCulturalBusca.aspx?AREID=3&SECID=8&IdDep=54&COLTEM=212
 
 ### GRADO 8
 
-Los Mayas y el Popol Vuh. Una de las civilizaciones más destacadas en el ámbito literario precolombino fue la civilización maya. ...
-Los Aztecas y los Cantares Mexicanos. ...
+Los Mayas y el Popol Vuh. Una de las civilizaciones más destacadas en el ámbito literario precolombino fue la civilización maya. ... ✅
+Los Aztecas y los Cantares Mexicanos. ... ✅
 Los Incas y los Himnos del Yachay Sapa. ...
 Los Mapuches y la Poesía Oral. ...
 Los Muiscas y la Leyenda de Bochica.
@@ -47,11 +49,11 @@ Los Muiscas y la Leyenda de Bochica.
 
 ### GRADO 9
 
-Cien años de soledad (1967) de Gabriel García Márquez. ...
-Rayuela (1963) de Julio Cortázar. ...
-La casa de los espíritus (1982) de Isabel Allende. ...
-Pedro Páramo (1955) de Juan Rulfo. ...
-El túnel (1948) de Ernesto Sábato.
+Cien años de soledad (1967) de Gabriel García Márquez. ... ✅
+Rayuela (1963) de Julio Cortázar. ... ✅
+La casa de los espíritus (1982) de Isabel Allende. ... ✅
+Pedro Páramo (1955) de Juan Rulfo. ... ✅
+El túnel (1948) de Ernesto Sábato. ✅
 
 ### GRADO 10
 
