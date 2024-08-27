@@ -27,9 +27,17 @@ if (!informacionGrado) return Astro.redirect("/404");
             <h2>Docente: {informacionGrado.profesor}</h2>
             <h2>{informacionGrado.tema}</h2>
         </div>
-        <ListaDeLibros
-            rutaGeneral={informacionGrado.ruta_general}
-            librosDelGrado={informacionGrado.libros}
-        />
+        {
+            informacionGrado.libros.length !== 0 ? (
+                <ListaDeLibros
+                    rutaGeneral={informacionGrado.ruta_general}
+                    librosDelGrado={informacionGrado.libros}
+                />
+            ) : (
+                <div style="display: flex; justify-content: center; align-items: center; margin: 100px 0px;">
+                    <h3>NO HAY LIBROS DISPONIBLES PARA ESTE GRADO</h3>
+                </div>
+            )
+        }
     </main>
 </Layout>
