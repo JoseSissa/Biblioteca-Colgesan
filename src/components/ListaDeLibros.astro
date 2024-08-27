@@ -9,7 +9,10 @@ const { rutaGeneral, librosDelGrado } = Astro.props;
                 <li class="li">
                     <a href={`/libros/${rutaGeneral}/${libro.ruta_especifica}`}>
                         <picture>
-                            <source srcset={`/img/libros/${rutaGeneral}/${libro.ruta_especifica}.avif`} type="image/avif"/>
+                            <source
+                                srcset={`/img/libros/${rutaGeneral}/${libro.ruta_especifica}.avif`}
+                                type="image/avif"
+                            />
                             <img
                                 src={`/img/libros/${rutaGeneral}/${libro.ruta_especifica}.webp`}
                                 alt={`Imagen de la portada del libro ${libro.nombre}`}
