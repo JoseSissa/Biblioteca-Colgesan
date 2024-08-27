@@ -18,7 +18,6 @@ export async function getStaticPaths() {
 }
 
 const { tema, libroURL } = Astro.params;
-console.log(tema, libroURL);
 
 const informacionGrado = INFORMACION_LIBROS.find(
     (gradoEnLista) => gradoEnLista.ruta_general === tema

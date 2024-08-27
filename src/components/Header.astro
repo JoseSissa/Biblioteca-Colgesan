@@ -1,12 +1,17 @@
 ---
+import EstamosTrabajando from "./EstamosTrabajando.astro";
+
 const { linkActive } = Astro.props;
 ---
 
-<header>
+<header transition:name="header">
     <nav>
         <ul>
             <li>
-                <a href="#" class=`link ${linkActive === 'libros' && 'active'}`>
+                <a
+                    href="/lista"
+                    class=`link ${linkActive === 'libros' && 'active'}`
+                >
                     Libros
                 </a>
             </li>
@@ -43,6 +48,7 @@ const { linkActive } = Astro.props;
             />
         </picture>
     </div> -->
+    <EstamosTrabajando />
 </header>
 
 <style>
