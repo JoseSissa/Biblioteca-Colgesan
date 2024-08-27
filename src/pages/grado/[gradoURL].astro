@@ -1,13 +1,13 @@
 ---
-import { INFORMACION_LIBROS } from "@/data/libros";
+import { INFORMACION_LIBROS } from "@/data/libros.js";
 import Layout from "@/layouts/Layout.astro";
 import ListaDeLibros from "@/components/ListaDeLibros.astro";
 import Header from "@/components/Header.astro";
 
 export async function getStaticPaths() {
-    return INFORMACION_LIBROS.map((gradoEnLista, i) => (
-        { params: { gradoURL: gradoEnLista.id }, }
-    ));
+    return INFORMACION_LIBROS.map((gradoEnLista, i) => ({
+        params: { gradoURL: gradoEnLista.id },
+    }));
 }
 
 const { gradoURL } = Astro.params;
@@ -17,11 +17,9 @@ const informacionGrado = INFORMACION_LIBROS.find(
 );
 
 if (!informacionGrado) return Astro.redirect("/404");
-
-
 ---
 
-<Layout title=`Libros - ${informacionGrado.grado}`>
+<Layout title=`Viajando Entre Páginas | Libros - ${informacionGrado.grado}`>
     <Header />
     <main>
         <div class="header-libro">
@@ -29,9 +27,9 @@ if (!informacionGrado) return Astro.redirect("/404");
             <h2>Docente: {informacionGrado.profesor}</h2>
             <h2>{informacionGrado.tema}</h2>
         </div>
-        <ListaDeLibros 
-            rutaGeneral={informacionGrado.ruta_general} 
-            librosDelGrado={informacionGrado.libros} 
+        <ListaDeLibros
+            rutaGeneral={informacionGrado.ruta_general}
+            librosDelGrado={informacionGrado.libros}
         />
     </main>
 </Layout>

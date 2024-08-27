@@ -102,8 +102,7 @@ export const INFORMACION_LIBROS = [
                 editorial: "N/A",
                 comentarios: [],
             },
-        ]
-        ,
+        ],
         comentariosProfesor: "",
     },
     {
@@ -197,8 +196,7 @@ export const INFORMACION_LIBROS = [
                 editorial: "N/A",
                 comentarios: [],
             },
-        ]
-        ,
+        ],
         comentariosProfesor: "",
     },
     {
@@ -268,8 +266,7 @@ export const INFORMACION_LIBROS = [
                 editorial: "N/A",
                 comentarios: [],
             },
-        ]
-        ,
+        ],
         comentariosProfesor: "",
     },
     {
@@ -277,7 +274,7 @@ export const INFORMACION_LIBROS = [
         grado: "Grado 9",
         profesor: "Profesor: 9",
         tema: "Obras Latinoamericanas",
-        ruta_general:"obras-latinoamericanas",
+        ruta_general: "obras-latinoamericanas",
         libros: [
             {
                 id: "9-1",
@@ -299,7 +296,11 @@ export const INFORMACION_LIBROS = [
                     "Rayuela, de Julio Cortázar, es una novela innovadora que permite al lector leerla de diferentes maneras, siguiendo un orden lineal o saltando entre capítulos según una tabla propuesta por el autor. La historia sigue a Horacio Oliveira y su búsqueda existencial en París y Buenos Aires. La novela es un experimento literario que cuestiona la realidad, el amor y el arte, y es una de las obras más influyentes del Boom Latinoamericano.",
                 anio: "1963",
                 autor: "Julio Cortázar",
-                genero: ["Novela", "Realismo Mágico", "Literatura Experimental"],
+                genero: [
+                    "Novela",
+                    "Realismo Mágico",
+                    "Literatura Experimental",
+                ],
                 editorial: "Editorial Sudamericana",
                 comentarios: [],
             },
@@ -339,8 +340,7 @@ export const INFORMACION_LIBROS = [
                 editorial: "Editorial Sur",
                 comentarios: [],
             },
-        ]
-        ,
+        ],
         comentariosProfesor: "",
     },
     {
@@ -348,7 +348,7 @@ export const INFORMACION_LIBROS = [
         grado: "Grado 10",
         profesor: "Profesor: 10",
         tema: "Obras Españolas",
-        ruta_general:"obras-espanolas",
+        ruta_general: "obras-espanolas",
         libros: [
             {
                 id: "10-1",
@@ -500,7 +500,12 @@ export const INFORMACION_LIBROS = [
                     "Guerra y paz es una vasta epopeya que narra las vidas de varias familias aristocráticas rusas en el contexto de las guerras napoleónicas. La obra abarca un amplio espectro de la vida rusa, explorando tanto la paz doméstica como los horrores de la guerra. A través de personajes como Pierre Bezukhov, el príncipe Andrei Bolkonsky y Natasha Rostova, Tolstói examina temas de amor, honor, poder, fe, y la naturaleza del destino. La novela combina elementos de la historia, la filosofía y la crítica social, y se considera una de las obras más importantes de la literatura universal.",
                 anio: "1865 y 1869",
                 autor: "León Tolstói",
-                genero: ["Novela", "Ficción Histórica", "Realismo", "Novela Filosófica"],
+                genero: [
+                    "Novela",
+                    "Ficción Histórica",
+                    "Realismo",
+                    "Novela Filosófica",
+                ],
                 editorial: "",
                 comentarios: [],
             },
@@ -524,7 +529,12 @@ export const INFORMACION_LIBROS = [
                     "El Principito narra la historia de un pequeño príncipe que viaja desde su asteroide a diferentes planetas, incluyendo la Tierra. A través de sus encuentros con diversos personajes, reflexiona sobre la naturaleza humana, la amistad, y el amor. A pesar de su apariencia de cuento infantil, la obra contiene profundas enseñanzas filosóficas que han cautivado a lectores de todas las edades.",
                 anio: "1943",
                 autor: "Antoine de Saint-Exupéry",
-                genero: ["Novela Corta", "Fábula", "Filosofía", "Literatura Infantil"],
+                genero: [
+                    "Novela Corta",
+                    "Fábula",
+                    "Filosofía",
+                    "Literatura Infantil",
+                ],
                 editorial: "Reynal & Hitchcock",
                 comentarios: [],
             },

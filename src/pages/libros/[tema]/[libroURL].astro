@@ -6,15 +6,19 @@ import InfoLibro from "@/components/InfoLibro.astro";
 
 export async function getStaticPaths() {
     return INFORMACION_LIBROS.flatMap((grado) => {
-        return grado.libros.map(libro => {
-            return { params: { tema: `${grado.ruta_general}`, libroURL: `${libro.ruta_especifica}` } };
+        return grado.libros.map((libro) => {
+            return {
+                params: {
+                    tema: `${grado.ruta_general}`,
+                    libroURL: `${libro.ruta_especifica}`,
+                },
+            };
         });
     });
 }
 
 const { tema, libroURL } = Astro.params;
 console.log(tema, libroURL);
-
 
 const informacionGrado = INFORMACION_LIBROS.find(
     (gradoEnLista) => gradoEnLista.ruta_general === tema
@@ -25,7 +29,6 @@ if (!informacionGrado) return Astro.redirect("/404");
 const infoLibro = informacionGrado.libros.find(
     (libroEnLista) => libroEnLista.ruta_especifica == libroURL
 );
-
 
 // Extraemos el género del libro
 let textoGenero = "";
@@ -48,7 +51,10 @@ if (infoLibro) {
         <section class="info">
             <div class="info-imagen">
                 <picture>
-                    <source srcset={`/img/libros/${informacionGrado.ruta_general}/${infoLibro.ruta_especifica}.avif`} type="image/avif"/>
+                    <source
+                        srcset={`/img/libros/${informacionGrado.ruta_general}/${infoLibro.ruta_especifica}.avif`}
+                        type="image/avif"
+                    />
                     <img
                         src={`/img/libros/${informacionGrado.ruta_general}/${infoLibro.ruta_especifica}.webp`}
                         alt={`Portada del libro ${infoLibro.nombre}`}
@@ -75,7 +81,10 @@ if (infoLibro) {
                 <InfoLibro titulo="Género(s)" texto={textoGenero} />
             </div>
             <div class="descargarLibro">
-                <a href=`/libros/${informacionGrado.ruta_general}/${infoLibro.ruta_especifica}.pdf` download>
+                <a
+                    href=`/libros/${informacionGrado.ruta_general}/${infoLibro.ruta_especifica}.pdf`
+                    download
+                >
                     Descargar Libro
                 </a>
                 <a
