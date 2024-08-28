@@ -1,0 +1,32 @@
+---
+import BotonHamburguesa from "./BotonHamburguesa.astro";
+---
+
+<div class="header-mobile">
+    <a href="/">Viajando entre Páginas</a>
+    <BotonHamburguesa />
+</div>
+
+<style>
+    .header-mobile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 8px 15px;
+        border-bottom: 2px solid var(--color);
+        backdrop-filter: blur(8px);
+    }
+    .header-mobile a {
+        padding: 4px 0px;
+        text-decoration: none;
+        font-weight: bold;
+        color: var(--color);
+    }
+
+    @media (min-width: 768px) {
+        .header-mobile {
+            display: none;
+        }
+    }
+</style>

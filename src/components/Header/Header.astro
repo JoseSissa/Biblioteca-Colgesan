@@ -1,0 +1,39 @@
+---
+import HeaderMobile from "./HeaderMobile.astro";
+import ListaDeLinks from "./ListaDeLinks.astro";
+import EstamosTrabajando from "./EstamosTrabajando.astro";
+
+const { linkActive } = Astro.props;
+---
+
+<header>
+    <nav>
+        <HeaderMobile />
+        <ListaDeLinks linkActive={linkActive} />
+    </nav>
+
+    <EstamosTrabajando />
+</header>
+
+<style>
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 10;
+    }
+
+    @media (min-width: 768px) {
+        header {
+            position: relative;
+        }
+
+        nav {
+            margin-bottom: 80px;
+        }
+    }
+</style>

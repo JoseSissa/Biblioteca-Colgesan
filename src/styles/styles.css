@@ -4,20 +4,15 @@ main {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 15px;
     line-height: 24px;
 }
-header {
-    width: 100%;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
+
 .aside {
     width: 100%;
     max-width: 25%;
-    padding: 0 15px;
+}
+.aside ul li {
+    list-style: none;
 }
 .contenido-principal {
     width: 100%;
@@ -116,7 +111,7 @@ header {
     padding: 40px 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .info {
         display: block;
     }
@@ -150,11 +145,17 @@ header {
         top: -70px;
         margin: 0 auto;
     }
+    .contenido-principal {
+        max-width: 100%;
+    }
+    .aside {
+        max-width: 100%;
+    }
 }
 /* --------------- */
 /* Estilos - Libro */
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .info {
         grid-template-columns: 1fr;
     }
