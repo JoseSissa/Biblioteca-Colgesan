@@ -1,13 +1,13 @@
 ---
 import { INFORMACION_LIBROS } from "@/data/libros.js";
 import Layout from "../layouts/Layout.astro";
-import Header from "@/components/Header.astro";
+import Header from "@/components/Header/Header.astro";
 
 const listaLibros = INFORMACION_LIBROS.flatMap((libro, i) => libro.libros);
 ---
 
 <Layout title="Viajando Entre Páginas | Libros">
-    <Header />
+    <Header linkActive="libros" />
     <main>
         <ul class="libros">
             {
