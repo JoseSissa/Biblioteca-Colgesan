@@ -1,7 +1,6 @@
 <button id="hamburguer" class="hamburguer">
     <span class="sr-only">Abrir y cerrar menú principal</span>
     <svg
-        id="hamburguer-svg"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -42,16 +41,18 @@
         width: 20px;
         height: 20px;
         z-index: 0;
+        pointer-events: none;
     }
 </style>
 
 <script>
     document.addEventListener("astro:page-load", () => {
         const menu = document.getElementById("menu");
+
         document.addEventListener("click", (e) => {
             const target = e.target as HTMLElement;
 
-            target.id == "hamburguer" || target.id == "hamburguer-svg"
+            target.id && target.id == "hamburguer"
                 ? menu.classList.toggle("expand-menu")
                 : menu.classList.remove("expand-menu");
         });
