@@ -30,6 +30,15 @@ import BotonesCarousel from "@/components/BotonesCarousel.astro";
         <div class="carousel-item" data-item-2>
             <img src="/img/carousel/i2.jpg" alt="" />
         </div>
+        <div class="carousel-item" data-item-3>
+            <img src="/img/carousel/i3.jpg" alt="" />
+        </div>
+        <div class="carousel-item" data-item-4>
+            <img src="/img/carousel/i4.jpg" alt="" />
+        </div>
+        <div class="carousel-item" data-item-5>
+            <img src="/img/carousel/i5.jpg" alt="" />
+        </div>
     </div>
     <BotonesCarousel />
 </section>
@@ -147,12 +156,10 @@ import BotonesCarousel from "@/components/BotonesCarousel.astro";
                     contadorSlider++;
                     if (contadorSlider == imagenesCarousel.length - 1) {
                         // Estoy en la última posición
-                        const firstElement =
-                            contenedorImagenes.firstElementChild;
-                        contenedorImagenes.appendChild(firstElement);
-                        contadorSlider--;
+                        moverUnSlideDerecha();
                     } else if (contadorSlider != imagenesCarousel.length - 1) {
                         moverUnSlideDerecha();
+                        contadorSlider++;
                     }
                 }
             }
@@ -164,8 +171,10 @@ import BotonesCarousel from "@/components/BotonesCarousel.astro";
                     moverUnSlideIzquierda();
                 } else if (imagenesCarousel.length > 2) {
                     if (contadorSlider == 1) {
-                        const lastElement = contenedorImagenes.lastElementChild;
-                        contenedorImagenes.prepend(lastElement);
+                        // Estoy en la primera posición
+                        moverUnSlideIzquierda();
+                        // const lastElement = contenedorImagenes.lastElementChild;
+                        // contenedorImagenes.prepend(lastElement);
                     } else if (contadorSlider > 1) {
                         moverUnSlideIzquierda();
                         contadorSlider--;
@@ -186,27 +195,47 @@ import BotonesCarousel from "@/components/BotonesCarousel.astro";
             if (isInTransition) {
                 isInTransition = false;
                 if (directionClick == MOVE_SLIDER.RIGHT) {
-                    console.log("Entrando transitionend en RIGHT");
-                    document.documentElement.style.setProperty(
-                        "--transition",
-                        "none"
-                    );
-                    moverUnSlideIzquierda();
-                    contenedorImagenes.removeChild(
-                        contenedorImagenes.firstElementChild
-                    );
+                    if (contadorSlider == imagenesCarousel.length - 1) {
+                        const firstElement =
+                            contenedorImagenes.firstElementChild;
+                        contenedorImagenes.appendChild(firstElement);
+                        contadorSlider--;
+                        document.documentElement.style.setProperty(
+                            "--transition",
+                            "none"
+                        );
+                        moverUnSlideIzquierda();
+                    } else {
+                        document.documentElement.style.setProperty(
+                            "--transition",
+                            "none"
+                        );
+                        moverUnSlideIzquierda();
+                        contenedorImagenes.removeChild(
+                            contenedorImagenes.firstElementChild
+                        );
+                    }
                 } else if (directionClick == MOVE_SLIDER.LEFT) {
-                    console.log("Entrando transitionend en LEFT");
-                    document.documentElement.style.setProperty(
-                        "--transition",
-                        "none"
-                    );
-                    const newElement = contenedorImagenes.children[1];
-                    contenedorImagenes.prepend(newElement.cloneNode(true));
-                    moverUnSlideDerecha();
-                    contenedorImagenes.removeChild(
-                        contenedorImagenes.lastElementChild
-                    );
+                    if (contadorSlider == 1) {
+                        document.documentElement.style.setProperty(
+                            "--transition",
+                            "none"
+                        );
+                        const lastElement = contenedorImagenes.lastElementChild;
+                        contenedorImagenes.prepend(lastElement);
+                        moverUnSlideDerecha();
+                    } else {
+                        document.documentElement.style.setProperty(
+                            "--transition",
+                            "none"
+                        );
+                        const newElement = contenedorImagenes.children[1];
+                        contenedorImagenes.prepend(newElement.cloneNode(true));
+                        moverUnSlideDerecha();
+                        contenedorImagenes.removeChild(
+                            contenedorImagenes.lastElementChild
+                        );
+                    }
                 }
             }
         });
