@@ -14,12 +14,6 @@ main {
 .aside ul li {
     list-style: none;
 }
-.contenido-principal {
-    width: 100%;
-    max-width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-}
 .title-2 {
     font-size: 40px;
     line-height: 40px;
@@ -144,9 +138,6 @@ main {
         text-align: center;
         top: -70px;
         margin: 0 auto;
-    }
-    .contenido-principal {
-        max-width: 100%;
     }
     .aside {
         max-width: 100%;

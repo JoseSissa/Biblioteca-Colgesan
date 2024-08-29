@@ -1,0 +1,171 @@
+---
+import BotonesCarousel from "@/components/BotonesCarousel.astro";
+---
+
+<section id="carousel" class="carousel">
+    <div id="carousel-container" class="carousel-container">
+        <div class="carousel-item" data-item-1>
+            <img src="/public/img/carousel/jovenes-leyendo-1.webp" alt="" />
+        </div>
+        <div class="carousel-item" data-item-2>
+            <img src="/public/img/carousel/jovenes-leyendo-2.webp" alt="" />
+        </div>
+        <div class="carousel-item" data-item-3>
+            <img src="/public/img/carousel/jovenes-leyendo-3.webp" alt="" />
+        </div>
+        <div class="carousel-item" data-item-4>
+            <img src="/public/img/carousel/joven-leyendo-1.webp" alt="" />
+        </div>
+        <div class="carousel-item" data-item-5>
+            <img src="/public/img/carousel/joven-leyendo-2.webp" alt="" />
+        </div>
+        <div class="carousel-item" data-item-5>
+            <img src="/public/img/carousel/pasaporte-lector.webp" alt="" />
+        </div>
+    </div>
+    <BotonesCarousel />
+</section>
+
+<style>
+    .carousel {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 500px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .carousel-container {
+        position: relative;
+        display: flex;
+        height: 100%;
+        transform: translateX(var(--slide-transform));
+        transition: var(--transition);
+    }
+    .carousel-item {
+        min-width: 100%;
+    }
+    .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        const botonDerecha = document.getElementById("sliderButtonRight");
+        const botonIzquierda = document.getElementById("sliderButtonLeft");
+
+        const carousel = document.getElementById("carousel");
+        const contenedorImagenes =
+            document.getElementById("carousel-container");
+
+        const imagenesCarousel = document.querySelectorAll(".carousel-item");
+
+        let contadorSlider = 1;
+        const MOVE_SLIDER = {
+            RIGHT: "RIGHT",
+            LEFT: "LEFT",
+        };
+
+        // ------------------------------------------------
+        // ------------------------------------------------
+        const obtenerAnchoDelCarousel = () => {
+            return carousel.getBoundingClientRect().width;
+        };
+        const obtenerAnchoVariableCSS = () => {
+            return Number(
+                getComputedStyle(document.documentElement)
+                    .getPropertyValue("--slide-transform")
+                    .trim()
+                    .replace("px", "")
+            );
+        };
+        const actualizarVarCSS = () => {
+            const nuevoValor =
+                obtenerAnchoVariableCSS() - obtenerAnchoDelCarousel();
+
+            document.documentElement.style.setProperty(
+                "--slide-transform",
+                `${nuevoValor}px`
+            );
+        };
+        const actualizarVarCSSDerecha = () => {
+            const nuevoValor =
+                obtenerAnchoVariableCSS() + obtenerAnchoDelCarousel();
+            document.documentElement.style.setProperty(
+                "--slide-transform",
+                `${nuevoValor}px`
+            );
+        };
+        const ordenarCarousel = () => {
+            document.documentElement.style.setProperty("--transition", "none");
+            // Si hay un solo elemento, no se hace nada
+            if (imagenesCarousel.length == 1) return;
+            // Si hay dos elementos en el slider
+            else if (imagenesCarousel.length == 2) {
+                const newElement = contenedorImagenes.lastElementChild;
+                contenedorImagenes.prepend(newElement.cloneNode(true));
+            }
+            // Si hay más de dos elementos en el slider
+            else if (imagenesCarousel.length > 2) {
+                if (contadorSlider == 1) {
+                    const lastElement = contenedorImagenes.lastElementChild;
+                    contenedorImagenes.prepend(lastElement);
+                }
+            }
+            actualizarVarCSS();
+        };
+
+        const ordenarDespuesDeClick = (direction: string) => {
+            if (direction == MOVE_SLIDER.RIGHT) {
+                if (imagenesCarousel.length == 2) {
+                    const newElement = contenedorImagenes.children[1];
+                    contenedorImagenes.appendChild(newElement.cloneNode(true));
+                    contenedorImagenes.removeChild(
+                        contenedorImagenes.firstElementChild
+                    );
+                } else if (imagenesCarousel.length > 2) {
+                    contadorSlider++;
+                    if (contadorSlider == imagenesCarousel.length - 1) {
+                        // Estoy en la última posición
+                        const firstElement =
+                            contenedorImagenes.firstElementChild;
+                        contenedorImagenes.appendChild(firstElement);
+                        contadorSlider--;
+                    } else if (contadorSlider != imagenesCarousel.length - 1) {
+                        actualizarVarCSS();
+                    }
+                }
+            }
+            // ----------------------------------------
+            // ----------------------------------------
+            else if (direction == MOVE_SLIDER.LEFT) {
+                if (imagenesCarousel.length == 2) {
+                    const newElement = contenedorImagenes.children[1];
+                    contenedorImagenes.prepend(newElement.cloneNode(true));
+                    contenedorImagenes.removeChild(
+                        contenedorImagenes.lastElementChild
+                    );
+                } else if (imagenesCarousel.length > 2) {
+                    if (contadorSlider == 1) {
+                        const lastElement = contenedorImagenes.lastElementChild;
+                        contenedorImagenes.prepend(lastElement);
+                    } else if (contadorSlider > 1) {
+                        actualizarVarCSSDerecha();
+                        contadorSlider--;
+                    }
+                }
+            }
+        };
+
+        botonDerecha.addEventListener("click", (e) => {
+            ordenarDespuesDeClick(MOVE_SLIDER.RIGHT);
+        });
+        botonIzquierda.addEventListener("click", (e) => {
+            ordenarDespuesDeClick(MOVE_SLIDER.LEFT);
+        });
+        ordenarCarousel();
+    });
+</script>

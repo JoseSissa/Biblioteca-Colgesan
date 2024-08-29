@@ -3,12 +3,16 @@ import Layout from "../layouts/Layout.astro";
 import Header from "@/components/Header/Header.astro";
 import SeleccionarGrado from "@/components/SeleccionarGrado.astro";
 import Recomendaciones from "@/components/Recomendaciones.astro";
+import Carousel from "@/components/Carousel.astro";
 ---
 
 <Layout title="Viajando Entre Páginas | Inicio">
     <Header />
     <main>
-        <SeleccionarGrado />
+        <div>
+            <Carousel />
+            <SeleccionarGrado />
+        </div>
         <Recomendaciones />
     </main>
 </Layout>
@@ -17,6 +21,12 @@ import Recomendaciones from "@/components/Recomendaciones.astro";
     @media (min-width: 1024px) {
         main {
             display: flex;
+        }
+
+        div {
+            width: 100%;
+            max-width: 75%;
+            margin-right: 20px;
         }
     }
 </style>

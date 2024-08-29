@@ -1,0 +1,28 @@
+---
+import Arrow from "@/components/icons/Arrow.astro";
+---
+
+<button id="sliderButtonLeft" class="slider-button">
+    <Arrow />
+</button>
+<button id="sliderButtonRight" class="slider-button right">
+    <Arrow className="rotate" />
+</button>
+
+<style>
+    .slider-button {
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: 0;
+        padding: 0px 20px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 10;
+    }
+    .right {
+        left: auto;
+        right: 0;
+    }
+</style>
