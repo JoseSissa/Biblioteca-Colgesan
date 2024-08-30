@@ -71,18 +71,19 @@ import BotonesCarousel from "@/components/BotonesCarousel.astro";
 
 <script>
     document.addEventListener("astro:page-load", () => {
-        const botonDerecha = document.getElementById("sliderButtonRight");
-        const botonIzquierda = document.getElementById("sliderButtonLeft");
+        const buttonRight = document.getElementById("sliderButtonRight");
+        const buttonLeft = document.getElementById("sliderButtonLeft");
 
         const carousel = document.getElementById("carousel");
-        const contenedorImagenes =
-            document.getElementById("carousel-container");
+        const containerOfSlider = document.getElementById("carousel-container");
 
-        const imagenesCarousel = document.querySelectorAll(".carousel-item");
+        const listSlidersInCarousel =
+            document.querySelectorAll(".carousel-item");
 
-        let contadorSlider = 1;
+        let counterSlider = 1;
         let directionClick = "";
         let isInTransition = false;
+
         const MOVE_SLIDER = {
             RIGHT: "RIGHT",
             LEFT: "LEFT",
@@ -90,10 +91,10 @@ import BotonesCarousel from "@/components/BotonesCarousel.astro";
 
         // ------------------------------------------------
         // ------------------------------------------------
-        const obtenerAnchoDelCarousel = (): number => {
+        const getWidthCarousel = (): number => {
             return carousel.getBoundingClientRect().width;
         };
-        const obtenerValorVariableCSS = (): number => {
+        const getValueVarTransformCSS = (): number => {
             return Number(
                 getComputedStyle(document.documentElement)
                     .getPropertyValue("--slide-transform")
@@ -101,44 +102,42 @@ import BotonesCarousel from "@/components/BotonesCarousel.astro";
                     .replace("px", "")
             );
         };
-
-        const moverUnSlideDerecha = () => {
-            const nuevoValor =
-                obtenerValorVariableCSS() - obtenerAnchoDelCarousel();
-
-            document.documentElement.style.setProperty(
-                "--slide-transform",
-                `${nuevoValor}px`
-            );
-        };
-        const moverUnSlideIzquierda = () => {
-            const nuevoValor =
-                obtenerValorVariableCSS() + obtenerAnchoDelCarousel();
-            document.documentElement.style.setProperty(
-                "--slide-transform",
-                `${nuevoValor}px`
-            );
-        };
-        const ordenarCarousel = () => {
+        const disableTransition = () => {
             document.documentElement.style.setProperty("--transition", "none");
+        };
+        const moveSlideToRight = () => {
+            const nuevoValor = getValueVarTransformCSS() - getWidthCarousel();
+            document.documentElement.style.setProperty(
+                "--slide-transform",
+                `${nuevoValor}px`
+            );
+        };
+        const moveSlideToLeft = () => {
+            const nuevoValor = getValueVarTransformCSS() + getWidthCarousel();
+            document.documentElement.style.setProperty(
+                "--slide-transform",
+                `${nuevoValor}px`
+            );
+        };
+        const sortCarousel = () => {
+            disableTransition();
             // Si hay un solo elemento, no se hace nada
-            if (imagenesCarousel.length == 1) return;
-            // Si hay dos elementos en el slider
-            else if (imagenesCarousel.length == 2) {
-                const newElement = contenedorImagenes.lastElementChild;
-                contenedorImagenes.prepend(newElement.cloneNode(true));
-            }
-            // Si hay más de dos elementos en el slider
-            else if (imagenesCarousel.length > 2) {
-                if (contadorSlider == 1) {
-                    const lastElement = contenedorImagenes.lastElementChild;
-                    contenedorImagenes.prepend(lastElement);
+            if (listSlidersInCarousel.length == 1) return;
+            else if (listSlidersInCarousel.length == 2) {
+                // Only two elements in the slider
+                const newElement = containerOfSlider.lastElementChild;
+                containerOfSlider.prepend(newElement.cloneNode(true));
+            } else if (listSlidersInCarousel.length > 2) {
+                // If there are more two elements in the slider
+                if (counterSlider == 1) {
+                    const lastElement = containerOfSlider.lastElementChild;
+                    containerOfSlider.prepend(lastElement);
                 }
             }
-            moverUnSlideDerecha();
+            moveSlideToRight();
         };
 
-        const ordenarDespuesDeClick = (direction: string) => {
+        const sortSliderAfterClick = (direction: string) => {
             if (isInTransition) return;
             isInTransition = true;
             document.documentElement.style.setProperty(
@@ -148,18 +147,21 @@ import BotonesCarousel from "@/components/BotonesCarousel.astro";
 
             if (direction == MOVE_SLIDER.RIGHT) {
                 directionClick = direction;
-                if (imagenesCarousel.length == 2) {
-                    const newElement = contenedorImagenes.children[1];
-                    contenedorImagenes.appendChild(newElement.cloneNode(true));
-                    moverUnSlideDerecha();
-                } else if (imagenesCarousel.length > 2) {
-                    contadorSlider++;
-                    if (contadorSlider == imagenesCarousel.length - 1) {
+                if (listSlidersInCarousel.length == 2) {
+                    const newElement = containerOfSlider.children[1];
+                    containerOfSlider.appendChild(newElement.cloneNode(true));
+                    moveSlideToRight();
+                } else if (listSlidersInCarousel.length > 2) {
+                    counterSlider++;
+                    if (counterSlider == listSlidersInCarousel.length - 1) {
                         // Estoy en la última posición
-                        moverUnSlideDerecha();
-                    } else if (contadorSlider != imagenesCarousel.length - 1) {
-                        moverUnSlideDerecha();
-                        contadorSlider++;
+                        moveSlideToRight();
+                    } else if (
+                        counterSlider !=
+                        listSlidersInCarousel.length - 1
+                    ) {
+                        moveSlideToRight();
+                        counterSlider++;
                     }
                 }
             }
@@ -167,73 +169,59 @@ import BotonesCarousel from "@/components/BotonesCarousel.astro";
             // ----------------------------------------
             else if (direction == MOVE_SLIDER.LEFT) {
                 directionClick = direction;
-                if (imagenesCarousel.length == 2) {
-                    moverUnSlideIzquierda();
-                } else if (imagenesCarousel.length > 2) {
-                    if (contadorSlider == 1) {
+                if (listSlidersInCarousel.length == 2) {
+                    moveSlideToLeft();
+                } else if (listSlidersInCarousel.length > 2) {
+                    if (counterSlider == 1) {
                         // Estoy en la primera posición
-                        moverUnSlideIzquierda();
-                        // const lastElement = contenedorImagenes.lastElementChild;
-                        // contenedorImagenes.prepend(lastElement);
-                    } else if (contadorSlider > 1) {
-                        moverUnSlideIzquierda();
-                        contadorSlider--;
+                        moveSlideToLeft();
+                    } else if (counterSlider > 1) {
+                        moveSlideToLeft();
+                        counterSlider--;
                     }
                 }
             }
         };
 
-        botonDerecha.addEventListener("click", (e) => {
-            ordenarDespuesDeClick(MOVE_SLIDER.RIGHT);
+        buttonRight.addEventListener("click", (e) => {
+            sortSliderAfterClick(MOVE_SLIDER.RIGHT);
         });
-        botonIzquierda.addEventListener("click", (e) => {
-            ordenarDespuesDeClick(MOVE_SLIDER.LEFT);
+        buttonLeft.addEventListener("click", (e) => {
+            sortSliderAfterClick(MOVE_SLIDER.LEFT);
         });
-        ordenarCarousel();
+        sortCarousel();
 
-        contenedorImagenes.addEventListener("transitionend", (e) => {
+        containerOfSlider.addEventListener("transitionend", (e) => {
             if (isInTransition) {
                 isInTransition = false;
                 if (directionClick == MOVE_SLIDER.RIGHT) {
-                    if (contadorSlider == imagenesCarousel.length - 1) {
+                    if (counterSlider == listSlidersInCarousel.length - 1) {
                         const firstElement =
-                            contenedorImagenes.firstElementChild;
-                        contenedorImagenes.appendChild(firstElement);
-                        contadorSlider--;
-                        document.documentElement.style.setProperty(
-                            "--transition",
-                            "none"
-                        );
-                        moverUnSlideIzquierda();
+                            containerOfSlider.firstElementChild;
+                        containerOfSlider.appendChild(firstElement);
+                        counterSlider--;
+                        disableTransition();
+                        moveSlideToLeft();
                     } else {
-                        document.documentElement.style.setProperty(
-                            "--transition",
-                            "none"
-                        );
-                        moverUnSlideIzquierda();
-                        contenedorImagenes.removeChild(
-                            contenedorImagenes.firstElementChild
+                        disableTransition();
+                        moveSlideToLeft();
+                        containerOfSlider.removeChild(
+                            containerOfSlider.firstElementChild
                         );
                     }
                 } else if (directionClick == MOVE_SLIDER.LEFT) {
-                    if (contadorSlider == 1) {
-                        document.documentElement.style.setProperty(
-                            "--transition",
-                            "none"
-                        );
-                        const lastElement = contenedorImagenes.lastElementChild;
-                        contenedorImagenes.prepend(lastElement);
-                        moverUnSlideDerecha();
+                    if (counterSlider == 1) {
+                        disableTransition();
+                        const lastElement = containerOfSlider.lastElementChild;
+                        containerOfSlider.prepend(lastElement);
+                        moveSlideToRight();
                     } else {
-                        document.documentElement.style.setProperty(
-                            "--transition",
-                            "none"
-                        );
-                        const newElement = contenedorImagenes.children[1];
-                        contenedorImagenes.prepend(newElement.cloneNode(true));
-                        moverUnSlideDerecha();
-                        contenedorImagenes.removeChild(
-                            contenedorImagenes.lastElementChild
+                        disableTransition();
+                        const newElement = containerOfSlider.children[1];
+                        containerOfSlider.prepend(newElement.cloneNode(true));
+                        moveSlideToRight();
+                        containerOfSlider.removeChild(
+                            containerOfSlider.lastElementChild
                         );
                     }
                 }
