@@ -64,6 +64,7 @@ import BotonesCarousel from "@/components/BotonesCarousel.astro";
         let counterSlider = 1;
         let directionClick = "";
         let isInTransition = false;
+        let intervalId: number;
         const MOVE_SLIDER = {
             RIGHT: "RIGHT",
             LEFT: "LEFT",
@@ -116,7 +117,13 @@ import BotonesCarousel from "@/components/BotonesCarousel.astro";
             }
             moveSlideToRight();
         };
-
+        const resetInterval = () => {
+            clearInterval(intervalId);
+            intervalId = setInterval(
+                () => sortSliderAfterClick(MOVE_SLIDER.RIGHT),
+                3500
+            );
+        };
         const sortSliderAfterClick = (direction: string) => {
             if (isInTransition) return;
             isInTransition = true;
@@ -160,11 +167,13 @@ import BotonesCarousel from "@/components/BotonesCarousel.astro";
             }
         };
 
-        buttonRight.addEventListener("click", (e) => {
+        buttonRight.addEventListener("click", () => {
             sortSliderAfterClick(MOVE_SLIDER.RIGHT);
+            resetInterval();
         });
-        buttonLeft.addEventListener("click", (e) => {
+        buttonLeft.addEventListener("click", () => {
             sortSliderAfterClick(MOVE_SLIDER.LEFT);
+            resetInterval();
         });
 
         containerOfSlider.addEventListener("transitionend", (e) => {
@@ -206,8 +215,9 @@ import BotonesCarousel from "@/components/BotonesCarousel.astro";
         });
 
         sortCarousel();
-        setInterval(() => {
-            sortSliderAfterClick(MOVE_SLIDER.RIGHT);
-        }, 3500);
+        intervalId = setInterval(
+            () => sortSliderAfterClick(MOVE_SLIDER.RIGHT),
+            3500
+        );
     });
 </script>
