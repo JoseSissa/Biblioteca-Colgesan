@@ -1,0 +1,23 @@
+---
+const { href, title } = Astro.props;
+---
+
+<li>
+    <a target="_blank" rel="noopener noreferrer" title={title} href={href}>
+        <!-- MaguaRED -->
+        <slot />
+    </a>
+</li>
+
+<style>
+    li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 112px;
+        margin-bottom: 16px;
+        box-shadow: -1px 1px 12px 0px rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+</style>

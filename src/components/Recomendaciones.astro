@@ -1,62 +1,65 @@
+---
+import CardRecommendation from "./CardRecommendation.astro";
+---
+
 <aside class="aside">
-    <h3>Recomendaciones</h3>
+    <h3>Recomendaciones:</h3>
     <div>
         <ul>
-            <li>
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="hola"
-                    href="https://maguared.gov.co/"
-                >
-                    MaguaRED
-                </a>
-            </li>
-            <li>
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://www.ellibrototal.com/ltotal/"
-                >
-                    El Libro Total
-                </a>
-            </li>
-            <li>
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://www.loqueleo.com/co/"
-                >
-                    Loqueleo
-                </a>
-            </li>
-            <li>
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://megaprofe.es/"
-                >
-                    MegaProfe
-                </a>
-            </li>
-            <li>
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://youtube.com/@Infolibros/videos"
-                >
-                    InfoLibros (YouTube)
-                </a>
-            </li>
-            <li>
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://www.banrepcultural.org/biblioteca-virtual"
-                >
-                    Biblioteca Vistual Banco de la República
-                </a>
-            </li>
+            <CardRecommendation
+                href="https://maguared.gov.co/"
+                title="Link hacia Maguared.gov.co"
+            >
+                <img
+                    src="/img/recomendaciones/maguared-2.jpg"
+                    alt="Logo de la página maguared.com puesta como recomendación."
+                />
+            </CardRecommendation>
+            <CardRecommendation
+                href="https://www.ellibrototal.com/ltotal/"
+                title="Link hacia ellibrototal.com/"
+            >
+                <img
+                    src="/img/recomendaciones/el-libro-total.svg"
+                    alt="Logo de la página ellibrototal.com puesta como recomendación."
+                />
+            </CardRecommendation>
+            <CardRecommendation
+                href="https://www.loqueleo.com/co/"
+                title="Link hacia loqueleo.com/co/"
+            >
+                <img
+                    src="/img/recomendaciones/loqueleo-2.jpeg"
+                    alt="Logo de la página loqueleo.com puesta como recomendación."
+                />
+            </CardRecommendation>
+            <CardRecommendation
+                href="https://megaprofe.es/"
+                title="Link hacia megaprofe.es/"
+            >
+                <img
+                    src="/img/recomendaciones/megaprofe-2.jpeg"
+                    alt="Logo de la página megaprofe.es puesta como recomendación."
+                />
+            </CardRecommendation>
+            <CardRecommendation
+                href="https://youtube.com/@Infolibros/videos"
+                title="Link hacia el canal de InfoLibros"
+            >
+                <img
+                    src="/img/recomendaciones/infolibros.jpeg"
+                    alt="Logo del canal de Youtube InfoLibros puesta como recomendación"
+                />
+            </CardRecommendation>
+            <CardRecommendation
+                href="https://www.banrepcultural.org/biblioteca-virtual"
+                title="Link hacia la biblioteca virtual del banco de la república"
+            >
+                <img
+                    src="/img/recomendaciones/banco-de-la-republica.jpeg"
+                    alt="Logo de la página de la biblioteca virtual del banco de la república puesta como recomendación."
+                />
+            </CardRecommendation>
         </ul>
     </div>
 </aside>
@@ -64,9 +67,14 @@
 <style>
     h3 {
         margin-bottom: 40px;
+        font-size: 20px;
     }
 
     div {
         padding-bottom: 100px;
+    }
+    img {
+        width: 100%;
+        height: auto;
     }
 </style>

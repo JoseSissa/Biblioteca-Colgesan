@@ -1,4 +1,6 @@
 ---
+import Background from "@/components/Background.astro";
+import BackgroundNoise from "@/components/BackgroundNoise.astro";
 import "@/styles/styles.css";
 import "@fontsource/merriweather";
 import { ViewTransitions } from "astro:transitions";
@@ -35,6 +37,8 @@ const { title } = Astro.props;
         <ViewTransitions />
     </head>
     <body>
+        <!-- <Background /> -->
+        <!-- <BackgroundNoise /> -->
         <slot />
     </body>
 </html>
@@ -51,8 +55,8 @@ const { title } = Astro.props;
     }
     html {
         font-family: "Merriweather", serif;
-        /* background-color: var(--background); */
-        background-color: #fff;
+        background-color: var(--background);
+        /* background-color: #fef6e4; */
         color: var(--color);
     }
 
