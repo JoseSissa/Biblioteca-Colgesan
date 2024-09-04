@@ -14,6 +14,11 @@
 | `Diseño 2`                | https://dribbble.com/shots/2505265/attachments/2505265-Abies-2-0-Bibliotecas-CRA?mode=media |
 | `Diseño 3`                | https://dribbble.com/shots/20816339-Book-Web-Store                                          |
 
+## Colores
+| Contenido                 | Action                                                                                      |
+| `1`                       | https://www.happyhues.co/palettes/14                                                        |
+| `2`                       | https://coolors.co/fef7f1-030303-755ddf-f5a461-f39c9f-63c5b7-ea7465-54204b                  |
+| `3`                       | https://www.frontendmentor.io/challenges/coffeeroasters-subscription-site-5Fc26HVY6         |
 
 ### GRADO 6
 La Muelona (región Andina) ✅
