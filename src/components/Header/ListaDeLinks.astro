@@ -39,7 +39,7 @@ const { linkActive } = Astro.props;
         width: 100%;
         padding: 20px 0;
         backdrop-filter: blur(8px);
-        border-bottom: 2px solid var(--color);
+        /* border-bottom: 3px solid var(--border); */
     }
     .menu li {
         list-style: none;
@@ -49,7 +49,7 @@ const { linkActive } = Astro.props;
         display: inline-block;
         padding: 8px 20px;
         text-decoration: none;
-        color: var(--color);
+        color: var(--text);
         font-weight: bold;
     }
 
@@ -75,7 +75,7 @@ const { linkActive } = Astro.props;
                 text-transform: uppercase;
                 font-size: 20px;
                 letter-spacing: 1px;
-                color: var(--color);
+                color: var(--text);
                 font-weight: bold;
 
                 &.active::after {
@@ -86,7 +86,7 @@ const { linkActive } = Astro.props;
                     top: 32px;
                     right: 12px;
                     bottom: 0;
-                    background-color: var(--color);
+                    background-color: var(--text);
                 }
             }
         }
@@ -101,7 +101,7 @@ const { linkActive } = Astro.props;
             bottom: 0;
             transform-origin: right;
             transform: scaleX(0);
-            background-color: var(--color);
+            background-color: var(--text);
             transition: transform 0.3s ease-out;
         }
         .link:hover::before {
