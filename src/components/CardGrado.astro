@@ -1,0 +1,71 @@
+---
+const { id, grado, tema, ruta } = Astro.props
+---
+
+<section class="card">
+    <div class="card-img">
+        <img class="card-img" src={`/img/cards/${ruta}.jpg`} alt="">
+    </div>
+    <div class="card-description">
+        <div>
+            <h4>{tema}</h4>
+            <span>{grado}</span>
+        </div>
+        <a class="card-description_button" href={`/grado/${id}`}>Ver</a>
+    </div>
+</section>
+
+<style>
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        max-height: 350px;
+        padding: 8px;
+        border-radius: 8px;
+        background-color: var(--white);
+        margin-bottom: 20px;
+        border: 1px solid var(--border);
+        box-shadow: 4px 4px 0 var(--border);
+    }
+    .card-img {
+        height: calc(100% - 48px);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+    }
+
+    .card-description {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 48px;
+        text-align: left;
+
+        h4, span {
+            font-size: 14px;
+        }
+        
+        span {
+            display: block;
+            font-size: 12px;
+        }
+    }
+    .card-description_button {
+        display: block;
+        padding: 4px 16px;
+        border-radius: 8px;
+        color: var(--white);
+        background-color: var(--border);
+        border: 1px solid var(--border);
+        text-decoration: none;
+    }
+    .card-description_button:hover {
+        color: var(--border);
+        background-color: var(--white);
+    }
+</style>
