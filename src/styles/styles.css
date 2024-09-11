@@ -25,6 +25,7 @@ main {
 .libros {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 230px));
+    /* grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); */
     gap: 20px;
     justify-content: center;
     text-align: center;

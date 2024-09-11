@@ -1,26 +1,30 @@
 ---
 import { INFORMACION_LIBROS } from "@/data/libros.js";
+import Card from "./CardGrado.astro";
 ---
 
-<section class="contenido-principal">
+<article class="contenido-principal">
     {
         INFORMACION_LIBROS.map((grado, i) => {
             return (
-                <div>
-                    <a href={`/grado/${grado.id}`}>
-                        {grado.grado} <br />
-                        {grado.profesor} <br />
-                        {grado.comentariosProfesor}
-                    </a>
-                </div>
+                <Card id={grado.id} grado={grado.grado} tema={grado.tema} ruta={grado.ruta_general} />
+                // <div>
+                //     <a href={`/grado/${grado.id}`}>
+                //         {grado.grado} <br />
+                //         {grado.profesor} <br />
+                //         {grado.comentariosProfesor}
+                //     </a>
+                // </div>
             );
         })
     }
-</section>
+</article>
 
 <style>
     .contenido-principal {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
         text-align: center;
         flex-direction: column;
         row-gap: 8px;
@@ -29,7 +33,7 @@ import { INFORMACION_LIBROS } from "@/data/libros.js";
 
     .contenido-principal div {
         width: 100%;
-        padding: 20px;
+        padding: 32px;
         border: 3px solid var(--border);
         border-radius: 8px;
         text-align: left;

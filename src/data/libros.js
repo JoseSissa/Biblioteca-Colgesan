@@ -3,7 +3,7 @@ export const INFORMACION_LIBROS = [
         id: "grado-6",
         grado: "Grado 6",
         profesor: "Profesor: 6",
-        tema: "Villa del Rosario / Tradicional",
+        tema: "Villa del Rosario",
         ruta_general: "villa-del-rosario-tradicional",
         libros: [
             {
