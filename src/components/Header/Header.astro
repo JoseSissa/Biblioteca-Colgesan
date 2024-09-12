@@ -12,7 +12,7 @@ const { linkActive } = Astro.props;
         <ListaDeLinks linkActive={linkActive} />
     </nav>
 
-    <EstamosTrabajando />
+    <!-- <EstamosTrabajando /> -->
 </header>
 
 <style>
@@ -21,19 +21,20 @@ const { linkActive } = Astro.props;
         top: 0;
         left: 0;
         width: 100%;
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
         z-index: 2;
+        background-color: #fffffe;
+        border-bottom: 1px solid var(--border);
+
+        nav {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 
     @media (min-width: 768px) {
         header {
             position: relative;
-        }
-
-        nav {
-            margin-bottom: 80px;
         }
     }
 </style>
