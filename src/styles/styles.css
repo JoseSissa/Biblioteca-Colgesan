@@ -1,6 +1,7 @@
 main {
     width: 100%;
     max-width: 1200px;
+    min-height: 50vh;
     margin-left: auto;
     margin-right: auto;
     line-height: 24px;
@@ -25,7 +26,6 @@ main {
 .libros {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 230px));
-    /* grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); */
     gap: 20px;
     justify-content: center;
     text-align: center;
@@ -78,12 +78,15 @@ main {
     padding: 160px 80px 80px;
     background-color: var(--white);
     border-radius: 8px;
+    outline: 1px solid var(--border);
 }
 
 .info-descripcion > div {
     padding: 0 20px;
 }
 .info-descripcion > div:last-child {
+    display: flex;
+    justify-content: space-between;
     padding: 48px 20px;
 }
 .descargarLibro {
@@ -99,7 +102,12 @@ main {
     border-radius: 24px;
     color: var(--white);
     background-color: var(--border);
+    border: 1px solid var(--border);
     text-decoration: none;
+}
+.descargarLibro a:hover {
+    color: var(--border);
+    background-color: var(--white);
 }
 .header-libro {
     padding: 40px 0;
@@ -118,6 +126,7 @@ main {
         padding: 120px 0px 40px;
         margin-left: -15px;
         margin-right: -15px;
+        margin-bottom: 40px;
     }
     .info-descripcion div {
         max-width: 500px;
