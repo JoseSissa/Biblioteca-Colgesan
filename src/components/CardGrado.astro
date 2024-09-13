@@ -2,7 +2,7 @@
 const { id, grado, tema, ruta } = Astro.props
 ---
 
-<section class="card">
+<a class="card" href={`/grado/${id}`}>
     <div class="card-img">
         <img class="card-img" src={`/img/cards/${ruta}.jpg`} alt="">
     </div>
@@ -11,9 +11,9 @@ const { id, grado, tema, ruta } = Astro.props
             <h4>{tema}</h4>
             <span>{grado}</span>
         </div>
-        <a class="card-description_button" href={`/grado/${id}`}>Ver</a>
+        <span class="card-description_button">Ver</span>
     </div>
-</section>
+</a>
 
 <style>
     .card {
@@ -27,6 +27,8 @@ const { id, grado, tema, ruta } = Astro.props
         margin-bottom: 20px;
         border: 1px solid var(--border);
         box-shadow: 4px 4px 0 var(--border);
+        text-decoration: none;
+        color: var(--border);
     }
     .card-img {
         height: calc(100% - 48px);
@@ -62,10 +64,9 @@ const { id, grado, tema, ruta } = Astro.props
         color: var(--white);
         background-color: var(--border);
         border: 1px solid var(--border);
-        text-decoration: none;
     }
     .card-description_button:hover {
-        color: var(--border);
         background-color: var(--white);
+        color: var(--border);
     }
 </style>
