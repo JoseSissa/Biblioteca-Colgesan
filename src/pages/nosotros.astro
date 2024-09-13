@@ -6,6 +6,17 @@ import Header from "@/components/Header/Header.astro";
 <Layout title="Viajando Entre Páginas | Nosotros">
     <Header linkActive="nosotros" />
     <main>
+        <picture>
+            <source
+                srcset="/img/background/nosotros-banner.avif"
+                type="image/avif"
+            />
+            <img
+                src="/img/background/nosotros-banner.webp"
+                alt="Foto de las 4 integrantes del proyecto"
+            />
+        </picture>
+
         <h3>¿Quiénes somos?</h3>
         <p>
             Somos un grupo de 4 estudiantes mujeres de 16 años del colegio
@@ -40,9 +51,29 @@ import Header from "@/components/Header/Header.astro";
 
 <style>
     main {
+        width: 100%;
+        max-width: 1024px;
+        margin-left: auto;
+        margin-right: auto;
         margin-bottom: 200px;
     }
     h3 {
         padding-top: 20px;
+    }
+
+    picture {
+        display: block;
+        height: 550px;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        box-shadow: 4px 4px 0 var(--border);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
     }
 </style>
