@@ -8,13 +8,6 @@ import Card from "./CardGrado.astro";
         INFORMACION_LIBROS.map((grado, i) => {
             return (
                 <Card id={grado.id} grado={grado.grado} tema={grado.tema} ruta={grado.ruta_general} />
-                // <div>
-                //     <a href={`/grado/${grado.id}`}>
-                //         {grado.grado} <br />
-                //         {grado.profesor} <br />
-                //         {grado.comentariosProfesor}
-                //     </a>
-                // </div>
             );
         })
     }
