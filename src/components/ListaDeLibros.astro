@@ -7,7 +7,10 @@ const { rutaGeneral, librosDelGrado } = Astro.props;
         librosDelGrado.map((libro, index) => {
             return (
                 <li class="li">
-                    <a href={`/libros/${rutaGeneral}/${libro.ruta_especifica}`}>
+                    <a
+                        class="book-shadow"
+                        href={`/libros/${rutaGeneral}/${libro.ruta_especifica}`}
+                    >
                         <picture>
                             <source
                                 srcset={`/img/libros/${rutaGeneral}/${libro.ruta_especifica}.avif`}
@@ -30,77 +33,3 @@ const { rutaGeneral, librosDelGrado } = Astro.props;
         })
     }
 </ul>
-
-<style>
-    ul {
-        padding: 40px 0px 80px;
-    }
-    li {
-        border-radius: 8px;
-        
-    }
-    a {
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-        padding: 8px 8px;
-        text-align: left;
-        color: var(--color);
-        text-decoration: none;
-        transition-property: transform;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        transition-duration: 150ms;
-        border-radius: 8px;
-        border: 1px solid var(--border);
-        box-shadow: 4px 4px 0 var(--border);
-        background-color: #fff;
-    }
-    a:hover {
-        transform: scale(1.02);
-        & .hoverLibro {
-            opacity: 1;
-            visibility: visible;
-        }
-    }
-    a img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        max-height: 300px;
-        border-radius: 8px 8px 0 0;
-    }
-    a span {
-        font-size: 14px;
-    }
-    a h4 {
-        padding-top: 8px;
-    }
-    .hoverLibro {
-        position: absolute;
-        top: 0;
-        left: 8px;
-        width: calc(100% - 16px);
-        height: 100%;
-        max-height: 308px;
-        padding-bottom: 40px;
-        background: linear-gradient(
-            to bottom,
-            transparent 30%,
-            #000 100%
-        );
-        align-content: end;
-        text-align: center;
-        opacity: 0;
-        visibility: hidden;
-        transition:
-            opacity 300ms ease,
-            visibility 300ms ease;
-    }
-
-    .hoverLibro span {
-        padding: 8px 20px;
-        border: 1px solid var(--white);
-        color: var(--white);
-    }
-</style>

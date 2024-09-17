@@ -96,3 +96,73 @@ if (infoLibro) {
         </section>
     </main>
 </Layout>
+
+<style>
+    .info {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .info-imagen {
+        text-align: center;
+        z-index: 1;
+    }
+
+    .info-imagen img {
+        width: 100%;
+        height: 350px;
+        max-width: 230px;
+        box-shadow: -12px 12px 20px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .info-general {
+        margin-bottom: 40px;
+    }
+
+    .info-general .genero {
+        text-transform: capitalize;
+    }
+    .info aside {
+        padding: 0px 20px;
+    }
+    .info-descripcion {
+        position: relative;
+        top: -100px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 160px 80px 80px;
+        background-color: var(--white);
+        border-radius: 8px;
+        outline: 1px solid var(--border);
+    }
+
+    .info-descripcion > div {
+        padding: 0 20px;
+    }
+    .info-descripcion > div:last-child {
+        display: flex;
+        justify-content: space-between;
+        padding: 48px 20px;
+    }
+    .descargarLibro {
+        position: absolute;
+        top: 0px;
+        right: 80px;
+        width: calc(50% - 80px);
+        border-bottom: 2px solid rgba(27, 31, 43, 0.1);
+    }
+    .descargarLibro a {
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 24px;
+        color: var(--white);
+        background-color: var(--border);
+        border: 1px solid var(--border);
+        text-decoration: none;
+    }
+    .descargarLibro a:hover {
+        color: var(--border);
+        background-color: var(--white);
+    }
+</style>
