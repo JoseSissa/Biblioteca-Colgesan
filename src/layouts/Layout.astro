@@ -1,8 +1,7 @@
 ---
-import Background from "@/components/Background.astro";
-import BackgroundNoise from "@/components/BackgroundNoise.astro";
 import "@/styles/styles.css";
 import "@fontsource/merriweather";
+import "@fontsource/poppins";
 import { ViewTransitions } from "astro:transitions";
 import Footer from "@/components/Footer.astro";
 interface Props {
@@ -59,6 +58,7 @@ const { title } = Astro.props;
     }
     html {
         font-family: "Merriweather", serif;
+        /* font-family: "Poppins", sans-serif; */
         background-color: var(--background);
         color: var(--text);
         background-color: #bec1dc;

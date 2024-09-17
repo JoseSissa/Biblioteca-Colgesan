@@ -3,14 +3,22 @@ import { INFORMACION_LIBROS } from "@/data/libros.js";
 import Card from "./CardGrado.astro";
 ---
 
-<article class="contenido-principal">
-    {
-        INFORMACION_LIBROS.map((grado, i) => {
-            return (
-                <Card id={grado.id} grado={grado.grado} tema={grado.tema} ruta={grado.ruta_general} />
-            );
-        })
-    }
+<article>
+    <h3 class="title-3">Búsqueda de los libros por grado</h3>
+    <div class="contenido-principal">
+        {
+            INFORMACION_LIBROS.map((grado, i) => {
+                return (
+                    <Card
+                        id={grado.id}
+                        grado={grado.grado}
+                        tema={grado.tema}
+                        ruta={grado.ruta_general}
+                    />
+                );
+            })
+        }
+    </div>
 </article>
 
 <style>
