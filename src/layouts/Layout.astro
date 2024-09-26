@@ -4,6 +4,7 @@ import "@fontsource/merriweather";
 import "@fontsource/poppins";
 import { ViewTransitions } from "astro:transitions";
 import Footer from "@/components/Footer.astro";
+import Background from "@/components/Background.astro";
 interface Props {
     title: string;
 }
@@ -40,6 +41,7 @@ const { title } = Astro.props;
         <ViewTransitions />
     </head>
     <body>
+        <Background />
         <slot />
         <Footer />
     </body>
