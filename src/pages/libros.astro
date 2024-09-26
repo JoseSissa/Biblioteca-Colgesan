@@ -9,6 +9,8 @@ const listaLibros = INFORMACION_LIBROS.flatMap((libro, i) => libro.libros);
 <Layout title="Viajando Entre Páginas | Libros">
     <Header linkActive="libros" />
     <main>
+        <h3 class="title-3">Nuestra selección de Libros</h3>
+        <p>En esta página encontrarás todos nuestros libros seleccionados, sientete libre de leerlos y descargarlos.</p>
         <ul class="libros">
             {
                 listaLibros.map((libro, i) => {
@@ -61,3 +63,13 @@ const listaLibros = INFORMACION_LIBROS.flatMap((libro, i) => libro.libros);
         </ul>
     </main>
 </Layout>
+
+<style>
+    main {
+        max-width: 1010px;
+    }
+
+    p {
+        margin-bottom: 20px;
+    }
+</style>

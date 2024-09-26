@@ -5,6 +5,7 @@ import Card from "./CardGrado.astro";
 
 <article>
     <h3 class="title-3">Búsqueda de los libros por grado</h3>
+    <p>En esta sección encontrarás nuestros libros clasificados por cada uno de los grados.</p>
     <div class="contenido-principal">
         {
             INFORMACION_LIBROS.map((grado, i) => {
@@ -45,6 +46,10 @@ import Card from "./CardGrado.astro";
         height: 100%;
         text-decoration: none;
         color: var(--text);
+    }
+
+    p {
+        margin-bottom: 20px;
     }
 
     @media (max-width: 767px) {
