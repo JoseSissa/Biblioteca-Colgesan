@@ -89,6 +89,9 @@ main {
         visibility: visible;
     }
 }
+.aside {
+    max-width: 25%;
+}
 
 @media (max-width: 767px) {
     .info {
@@ -125,9 +128,6 @@ main {
         top: -70px;
         margin: 0 auto;
     }
-    .aside {
-        max-width: 100%;
-    }
 }
 
 @media (max-width: 767px) {
@@ -140,6 +140,12 @@ main {
     }
     .title-2 {
         margin-bottom: 32px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .aside {
+        max-width: 100%;
     }
 }
 
