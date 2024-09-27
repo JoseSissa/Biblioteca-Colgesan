@@ -6,7 +6,7 @@ import EstamosTrabajando from "./EstamosTrabajando.astro";
 const { linkActive } = Astro.props;
 ---
 
-<header>
+<header transition:name="header">
     <nav>
         <HeaderMobile />
         <ListaDeLinks linkActive={linkActive} />
